@@ -62,6 +62,22 @@ zinaenda; repo ipo. **Retro:** Ollama alifanya kazi vipi bila intaneti?
 **Acceptance criteria:** barua moja ya kiolesura + CV ya kurasa 2
 zipo PDF, zimepakiwa kwenye repo (bila taarifa za faragha).
 
+## ⬜ Sprint 2b — Data / AI / ML certificates (SEHEMU ILIYOONGEZWA)
+**Kwa nini haikuwepo?** Mtaala 4.1 haikuorodhesha vyeti vya data/AI
+(CompTIA/CCNA pekee) ingawa 3.3 ilifundisha AI — lakini soko (PPRA
+*nafasi ya AI Applications*) + P9 zinahitaji. Kama mwombaji wa AI
+post, **nataka** vyeti vya data/AI, **ili** ujuzi wa ML uwe na alama
+rasmi.
+- [ ] **Kaggle micro-courses** (BURE + cheti): https://www.kaggle.com/learn
+      — "Intro to Machine Learning", "Pandas", "Intro to Deep Learning"
+- [ ] **freeCodeCamp Data Analysis with Python** (BURE cheti):
+      https://www.freecodecamp.org/learn/data-analysis-with-python/
+- [ ] **Hugging Face NLP course** (BURE — LLM era):
+      https://huggingface.co/learn/nlp-course
+- [ ] (Baadaye, kulipwa) Google Data Analytics / TensorFlow Developer
+      Certificate / Databricks — mara tu VIPAJI vipo
+**Acceptance criteria:** vyeti 2 vya bure + viungo kwenye CV.
+
 ## ⬜ Epic ya baadaye — Vyeti vya kulipwa (hakuna gharama bado)
 - [ ] CompTIA A+ → Network+ → Security+ (utafiti wa bure: Professor
       Messer, official objectives) — anza tu ukiwa na vipaji
