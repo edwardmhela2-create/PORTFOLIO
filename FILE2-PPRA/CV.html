@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CV — [JINA KAMILI LAKU]</title>
+<style>
+  @page { size: A4; margin: 14mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; font-size: 10.5pt;
+         line-height: 1.38; color: #1a1a1a; margin: 0; }
+  header { border-bottom: 2.5px solid #14532d; padding-bottom: 6px;
+           margin-bottom: 8px; }
+  h1 { font-size: 20pt; margin: 0 0 2px; color: #14532d; letter-spacing: .5px; }
+  .contact { font-size: 10pt; color: #333; }
+  .contact a { color: #14532d; text-decoration: none; }
+  h2 { font-size: 11.5pt; color: #14532d; text-transform: uppercase;
+       letter-spacing: 1px; border-bottom: 1px solid #cbd5cb;
+       padding-bottom: 2px; margin: 12px 0 6px; }
+  p { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  th, td { text-align: left; vertical-align: top; padding: 3px 6px;
+           border-bottom: 1px solid #e5e7e5; }
+  th { background: #f0f5f0; color: #14532d; }
+  ul { margin: 4px 0 4px 18px; padding: 0; }
+  li { margin-bottom: 3px; }
+  .proj { margin-bottom: 5px; }
+  .proj b { color: #14532d; }
+  .ph { background: #fff7d6; padding: 0 3px; border-radius: 2px; }
+  .muted { color: #555; font-size: 9.5pt; }
+  .two { display: flex; gap: 14px; }
+  .two > div { flex: 1; }
+  footer { margin-top: 10px; font-size: 9pt; color: #666;
+           border-top: 1px solid #ddd; padding-top: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>[JINA KAMILI LAKU]</h1>
+  <div class="contact">
+    <span class="ph">[MJI, TANZANIA]</span> ·
+    <span class="ph">[SIMU: +255 …]</span> ·
+    <span class="ph">[BARUA@PEPE.COM]</span><br>
+    GitHub:
+    <a href="https://github.com/edwardmhela2-create/PORTFOLIO">github.com/edwardmhela2-create/PORTFOLIO</a>
+    (13 miradi, mitihani 146 inapita — README ya kila mradi)
+  </div>
+</header>
+
+<h2>Professional Summary</h2>
+<p>
+Candidate for <b>ICT Officer II — Artificial Intelligence Applications</b>.
+Self-directed practitioner who prepared through a structured
+<b>13-project portfolio</b> with <b>146 automated tests</b>: Python,
+Django, FastAPI, machine learning and a complete <b>document Q&amp;A
+assistant (RAG)</b> that answers questions from PDFs with citations while
+running <b>fully offline on a local LLM (Ollama)</b>. Documents every
+project in Swahili + English READMEs and works with Git/GitHub
+version control. <span class="ph">[ongeza sentensi 1-2 kuhusu elimu
+yako au lengo lako]</span>
+</p>
+
+<h2>Core Skills — mapped to PSRS requirements</h2>
+<table>
+  <tr><th style="width:22%">Skill Area</th><th style="width:44%">Technology</th><th>Evidence in portfolio</th></tr>
+  <tr><td><b>Language</b></td><td>Python (primary), JavaScript, HTML/CSS, SQL</td><td>All 13 projects; test suites in pytest</td></tr>
+  <tr><td><b>Pipelines / APIs</b></td><td>RESTful APIs, JSON, Pydantic schemas, upload → process → respond</td><td>FastAPI service (P13): 6 endpoints, validation 400/404/422</td></tr>
+  <tr><td><b>LLM hosting</b></td><td><b>Ollama</b> (local, llama3.2:1b) — zero data leaves the machine</td><td>P13 answers generated on-device; graceful offline mode</td></tr>
+  <tr><td><b>Prompting</b></td><td>System prompts, structured JSON outputs, citation rules, anti-hallucination (“Sijui” policy)</td><td><code>mjibu/prompts.py</code> + tests</td></tr>
+  <tr><td><b>Agentic AI / RAG</b></td><td><b>Retrieval-Augmented Generation</b>, cosine similarity search, chunking w/ overlap</td><td>P13 core pipeline (retrieve → context → generate)</td></tr>
+  <tr><td><b>Version control</b></td><td>Git, GitHub (branch main, .gitignore, push workflow)</td><td>Public repo, commit history per sprint</td></tr>
+  <tr><td><b>Data / ML</b></td><td>pandas, scikit-learn (TF-IDF, classification, precision/recall), model persistence</td><td>P9 classifier: 94.7% accuracy, 12 tests</td></tr>
+  <tr><td><b>Web systems</b></td><td>Django (ORM, migrations, RBAC, audit trail, atomic transactions), vanilla JS</td><td>P10–P12: 3 full systems, 63 tests</td></tr>
+  <tr><td><b>In progress</b></td><td>Embeddings + vector DB (Chroma/Qdrant), LangChain, cloud LLM APIs (OpenAI/Anthropic) as interchangeable backends</td><td>Planned upgrades listed in P13 README</td></tr>
+</table>
+
+<h2>Selected Projects</h2>
+
+<div class="proj">
+  <b>Mjibu — Document Q&amp;A assistant (RAG)</b> · Python, FastAPI, scikit-learn, Ollama, JS
+  <span class="muted">— matches the “Portfolio Project Idea” of this exact vacancy</span>
+  <ul>
+    <li>Ingests <b>PDF / MD / TXT</b> → automatic <b>chunking</b> (600 chars, 100 overlap) → vectorised <b>TF-IDF cosine retrieval</b> → top-k context → <b>local LLM</b> → Swahili/English answer with <b>citations [1]</b>.</li>
+    <li>Chat UI, upload/delete endpoints, “Sijui” fallback (no answer outside context), structured JSON responses, friendly offline mode.</li>
+    <li><b>18 automated tests</b> (chunking, vector store, API validation, prompts, mocked LLM).</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <b>Optimizer — ML lead-scoring classifier</b> · pandas, scikit-learn, pytest
+  <ul><li>Feature engineering, train/test split, <b>94.7% accuracy</b>, pickled model, 12 tests.</li></ul>
+</div>
+
+<div class="proj">
+  <b>Three full Django systems</b> — Benki 360 (banking), Ofisi 360 (office workflow), Duka (e-commerce)
+  <ul>
+    <li>ORM + migrations, <b>3-level RBAC</b>, Kiswahili admin, audit trail via signals, CSV reports,
+        <b>atomic checkout</b>, price snapshots, cart context processor — <b>63 tests total</b>.</li>
+  </ul>
+</div>
+
+<div class="proj">
+  <b>Cybersecurity toolkit</b> · hashing, port scanning, keylogger detection (sandboxed)
+  <ul><li>Integrity checks + scanning with documented ethics boundaries — 18 tests.</li></ul>
+</div>
+
+<div class="proj">
+  <b>Portfolio website</b> · responsive HTML/CSS/JS documenting all projects
+  <ul><li>Dashboard of 13 projects, run instructions and learning roadmap.</li></ul>
+</div>
+
+<h2>Education</h2>
+<p><b class="ph">[CHUO / TAHLILA / MTAALA]</b> — <span class="ph">[Taluma / Kozi, miaka ya masomo]</span><br>
+<span class="ph">[Matokeo muhimu — SOMA: vyeti tu vilivyothibitishwa vitambulishwa; result slips HAZIKUBALIWI kwenye maombi ya PSRS]</span></p>
+
+<h2>Certifications</h2>
+<ul>
+  <li><span class="ph">[Cheti/mbadala uliyopata — ISC² CC / Kaggle / freeCodeCamp / n.k.]</span></li>
+  <li class="muted">In progress: free global courses (ISC² CC exam, Kaggle micro-courses, freeCodeCamp Data Analysis, Hugging Face NLP).</li>
+</ul>
+
+<h2>Referees (3)</h2>
+<div class="two">
+  <div>1. <b class="ph">[JINA]</b><br><span class="ph">[Cheo]</span><br><span class="ph">[Simu]</span></div>
+  <div>2. <b class="ph">[JINA]</b><br><span class="ph">[Cheo]</span><br><span class="ph">[Simu]</span></div>
+</div>
+<div>3. <b class="ph">[JINA]</b> — <span class="ph">[Cheo, simu]</span></div>
+
+<footer>
+  Full transcripts &amp; certified certificates attach separately per PSRS rules.
+  Reference: <span class="ph">[Tangazo jipya Ref. Na. JA.__/__/01/__]</span>
+  · Application via portal.ajira.go.tz only.
+</footer>
+
+</body>
+</html>

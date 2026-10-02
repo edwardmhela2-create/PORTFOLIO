@@ -20,3 +20,11 @@ staticfiles/
 .env
 .DS_Store
 Thumbs.db
+
+# Faili zinazopakiwa na watumiaji kwenye P13 (faragha — hazipendi Git)
+P13-mjibu-rag/data/nyaraka/*
+!P13-mjibu-rag/data/nyaraka/portfolio.md
+!P13-mjibu-rag/data/nyaraka/usalama.md
+
+# CV/Barua zilizojazwa na taarifa binafsi (hazipendi Git)
+FILE2-PPRA/IMETIMLIWA/

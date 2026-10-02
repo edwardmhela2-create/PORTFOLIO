@@ -55,17 +55,25 @@ Ollama + Python + vector search ulioanza P9.
 wingu; mara ya kwanza = 81s (model load) → streaming ndio jibu la
 production.
 
-## ⬜ Sprint 5 — File 2: Maombi ya PPRA (CV + barua)
+## ⬜ Sprint 5 — File 2: Maombi ya PPRA (CV + barua) — Hali: kiolesura KIMETENGENEZWA
 **Kama** sekretari wa PSRS, **nataka** barua iliyosainiwa na CV sahihi,
 **ili** maombi yangu yapatikane.
-- [ ] CV (English) yenye viungo vya GitHub + miradi 12 + mitihani 125
-- [ ] Barua ya maombi (Kiswahili au Kiingereza) — mtindo wa PPRA
-      (sekretari, S.L.P. 2320, Dodoma)
+- [x] CV (English, kurasa 2) yenye viungo vya GitHub + miradi 13 +
+      mitihani 146 — `FILE2-PPRA/CV.pdf` (kiolesura, placeholders)
+- [x] Barua ya maombi (Kiswahili, kurasa 1) mtindo wa PSRS —
+      `FILE2-PPRA/BARUA_MAOMBI.pdf` (S.L.P. 2320, Tambukareli, Dodoma)
+- [ ] Jaza taarifa binafsi (jina/simu/elimu/wadhamini 3) →
+      `FILE2-PPRA/IMETIMLIWA/` (gitignored) + saini
 - [ ] NGOs 3, pasipoti picha, vyeti vilivyothibitishwa (kumbuka:
       *result slips hazikubaliwi*)
 - [ ] Jaribio la portal.ajira.go.tz (mwaka unaofuata)
 **Acceptance criteria:** barua moja ya kiolesura + CV ya kurasa 2
-zipo PDF, zimepakiwa kwenye repo (bila taarifa za faragha).
+zipo PDF, zimepakiwa kwenye repo (bila taarifa za faragha) —
+**ZIMEFIKIWA** ✓ (PDF 2 zimesajiliwa).
+**Retro:** kwa nini CV ya kigeni iwekee "146 tests" badala ya
+"kazi ya miaka 3"? (Kwa sababu portfolio ndio uthibitisho wetu —
+tangazo linasema wazi: *"draft your application letter referencing
+specific pieces of the project"*).
 
 ## ⬜ Sprint 2b — Data / AI / ML certificates (SEHEMU ILIYOONGEZWA)
 **Kwa nini haikuwepo?** Mtaala 4.1 haikuorodhesha vyeti vya data/AI
