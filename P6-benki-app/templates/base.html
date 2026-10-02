@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block kichwa %}Benki App{% endblock %} | P6</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+{% if session.get('mtumiaji') %}
+<header class="ukurasa-juu">
+  <a class="neno" href="{{ url_for('nyumbani') }}">BENKI<span>App</span></a>
+  <nav>
+    <a href="{{ url_for('nyumbani') }}">Orodha</a>
+    <a href="{{ url_for('orodha_wateja') }}">Wateja</a>
+    <a href="{{ url_for('ongeza') }}">Ongeza</a>
+    <a href="{{ url_for('ripoti') }}">Ripoti</a>
+  </nav>
+  <div class="mtumiaji">
+    <span>{{ session['mtumiaji'] }} ({{ session['jukumu'] }})</span>
+    <a class="toka" href="{{ url_for('badilisha') }}">Nenosiri</a>
+    <a class="toka" href="{{ url_for('toka') }}">Toka</a>
+  </div>
+</header>
+{% endif %}
+  <main>
+  {% with ujumbe = get_flashed_messages(with_categories=true) %}
+    {% for aina, ujumbe in ujumbe %}
+      <div class="ujumbe {{ aina }}">{{ ujumbe }}</div>
+    {% endfor %}
+  {% endwith %}
+  {% block yaliyomo %}{% endblock %}
+</main>
+</body>
+</html>

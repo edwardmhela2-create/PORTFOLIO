@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block kichwa %}Ripoti{% endblock %}
+{% block yaliyomo %}
+<h1>Ripoti ya maombi</h1>
+<div class="kadi-wrap">
+  {% for t in takwimu %}
+  <div class="kadi">
+    <b>{{ t.idadi }}</b><span>{{ t.jina }}</span>
+  </div>
+  {% endfor %}
+  <div class="kadi"><b>{{ jumla }}</b><span>Jumla ya maombi</span></div>
+  <div class="kadi"><b>{{ barua_jumla }}</b><span>Barua zilizorejistrwa</span></div>
+</div>
+<a class="btn" href="{% url 'ripoti_csv' %}">Pakua CSV (Excel)</a>
+
+<h2>Kumbukumbu za karibuni</h2>
+<table>
+  <tr><th>Tarehe</th><th>Hatua</th><th>Alifanya</th></tr>
+  {% for k in karibuni %}
+  <tr>
+    <td>{{ k.tarehe|date:"d/m/Y H:i" }}</td>
+    <td>{{ k.mada }}{% if k.maombi %} <a href="{% url 'maombi_maelezo' k.maombi.pk %}">(ona)</a>{% endif %}</td>
+    <td>{{ k.alifanya.username|default:"-" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="3">Hakuna kumbukumbu</td></tr>
+  {% endfor %}
+</table>
+<p class="kidokezo">Ripoti hii na CSV ni kwa <b>meneja/admin tu</b>
+(kwa njia ya <code>linahitaji_jukumu</code>).</p>
+{% endblock %}

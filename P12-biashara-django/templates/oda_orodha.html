@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block kichwa %}Oda zangu{% endblock %}
+{% block yaliyomo %}
+<h1>Oda zangu</h1>
+{% if oda_zangu %}
+<table class="jedwali">
+  <tr>
+    <th>Kumbukumbu</th><th>Tarehe</th><th>Hali</th>
+    <th>Njia</th><th>Jumla</th><th></th>
+  </tr>
+  {% for o in oda_zangu %}
+  <tr>
+    <td><b>{{ o.ref }}</b></td>
+    <td>{{ o.imeandikwa|date:"d/m/Y H:i" }}</td>
+    <td>
+      {% if o.hali == "imekulipwa" %}
+        <span class="alama alama-hai">Imekulipwa</span>
+      {% elif o.hali == "imefutwa" %}
+        <span class="alama alama-kutoa">Imefutwa</span>
+      {% else %}
+        <span class="alama alama-umelipa">Inasubiri malipo</span>
+      {% endif %}
+    </td>
+    <td>{{ o.get_njia_display }}</td>
+    <td class="sarafu">TZS {{ o.jumla|floatformat:0 }}</td>
+    <td><a class="btn kidogo" href="{% url 'oda_maelezo' o.pk %}">Fungua</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="kidokezo">Bado hujanunua kitu. <a href="{% url 'bidhaa_orodha' %}">Anza kununua</a></p>
+{% endif %}
+{% endblock %}

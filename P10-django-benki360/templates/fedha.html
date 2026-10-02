@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block kichwa %}Fedha{% endblock %}
+{% block yaliyomo %}
+<h1>Kuweka / Kutoa fedha</h1>
+{% if hatari %}
+<div class="ujumbe ujumbe-error">{{ hatari }}</div>
+{% endif %}
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Thibitisha kitendo</button>
+</form>
+<p class="kidokezo">Kila kitendo: salio hubadilika kwa
+<b>transaction</b> (mwanzo-mwisho) &amp; kinaandikwa kwenye
+<b>Miamala</b> na jina la mtumiaji aliyefanya.</p>
+{% endblock %}

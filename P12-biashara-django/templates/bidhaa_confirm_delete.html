@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block kichwa %}Futa bidhaa{% endblock %}
+{% block yaliyomo %}
+<h1>Futa bidhaa?</h1>
+<div class="fomu-kubwa">
+  <p>Una uhakika unataka kufuta <b>{{ object.jina }}</b>?
+     Oda za zamani zitabaki (snapshot) lakini hii haiuzwi tena.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn hatari">Ndiyo, futa</button>
+    <a class="btn" href="{% url 'bidhaa_maelezo' object.pk %}">Hapana</a>
+  </form>
+</div>
+{% endblock %}

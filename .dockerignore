@@ -1,0 +1,11 @@
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+**/*.db
+**/*.csv
+P1-sysreport
+P2-netmapper
+P3-mkopo-cli
+P4-portfolio-website
+P5-database-design
+P7-cyber-toolkit

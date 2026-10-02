@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block kichwa %}Ingia{% endblock %}
+{% block yaliyomo %}
+<h1>Ingia kwenye Ofisi 360</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Ingia</button>
+</form>
+<p class="kidokezo">Majaribio: admin/ofisi123 &middot;
+juma/mtum123 (mfanyakazi) &middot; neema/meneja123 (meneja) &middot;
+rejest/rej123 (rejista)</p>
+{% endblock %}

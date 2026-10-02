@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block kichwa %}Jedwali la miamala{% endblock %}
+{% block yaliyomo %}
+<h1>Jedwali la miamala (mwisho 50)</h1>
+<table>
+  <tr><th>Tarehe</th><th>Aina</th><th>Kiasi</th><th>Akaunti</th>
+      <th>Mteja</th><th>Maelezo</th><th>Alifanya</th></tr>
+  {% for m in miamala %}
+  <tr>
+    <td>{{ m.tarehe|date:"d/m/Y H:i" }}</td>
+    <td><span class="alama alama-{{ m.aina }}">{{ m.get_aina_display }}</span></td>
+    <td class="sarafu">{{ m.kiasi|floatformat:2 }}</td>
+    <td><code>{{ m.akaunti.namba }}</code></td>
+    <td>{{ m.akaunti.wateja.jina }}</td>
+    <td>{{ m.maelezo }}</td>
+    <td>{{ m.alifanya.username|default:"-" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="7">Hakuna miamala bado</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

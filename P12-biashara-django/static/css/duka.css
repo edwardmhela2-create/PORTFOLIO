@@ -1,0 +1,52 @@
+/* Duka la Kwanza - P12 (linaongeza juu ya faili.css) */
+
+.bidhaa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.bidhaa-kadi {
+  background: #fff;
+  border-radius: 10px;
+  border-top: 4px solid var(--bluu);
+  padding: 14px 16px;
+}
+
+.bidhaa-kadi h3 { margin: 0 0 6px; font-size: 1.05rem; }
+.bidhaa-kadi h3 a { color: var(--mweusi); text-decoration: none; }
+.bidhaa-kadi h3 a:hover { color: var(--bluu); }
+.bidhaa-kadi .bei { color: var(--bluu); font-weight: 700;
+  font-size: 1.25rem; margin: 4px 0; }
+.bidhaa-kadi .maelezo-mafupi { color: #5b6b7d; font-size: 0.88rem;
+  margin: 6px 0 10px; }
+.bidhaa-kadi .btn { font-size: 0.88rem; padding: 6px 14px; }
+
+.lebo-zaa { display: flex; gap: 8px; flex-wrap: wrap; }
+.lebo-zaa .alama { text-decoration: none; border: 1px solid #e6ecf3; }
+
+.bei-kubwa { font-size: 1.7rem; font-weight: 700; color: var(--bluu);
+  margin: 6px 0; }
+.bidhaa-maelezo { background: #fff; border-radius: 12px;
+  padding: 20px 24px; border-left: 5px solid var(--bluu); }
+
+.fomu-ndogo { max-width: 320px; }
+.fomu-idadi { display: flex; gap: 6px; }
+.fomu-idadi input { width: 70px; padding: 5px; border: 1px solid #ccd6e3;
+  border-radius: 6px; }
+.btn.kidogo { font-size: 0.82rem; padding: 5px 10px; }
+
+.kurasa { display: flex; gap: 14px; align-items: center;
+  justify-content: center; margin-top: 16px; }
+.kurasa a { font-weight: 600; }
+
+.hatua-malipo { display: flex; gap: 16px; align-items: center;
+  margin-top: 14px; }
+
+/* RadioSelect (LipaForm) */
+.fomu-kubwa ul { list-style: none; padding: 0; margin: 4px 0 8px; }
+.fomu-kubwa ul li { margin: 4px 0; }
+.fomu-kubwa ul label { font-weight: 500; }
+
+.jedwali .btn { cursor: pointer; }

@@ -1,0 +1,190 @@
+:root {
+  --sababu: #1b2a4a;
+  --njano: #f0b429;
+  --kijani: #1f9d55;
+  --nyekundu: #c53030;
+  --pepe: #f6f8fb;
+  --mpaka: #d9e1ec;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--pepe);
+  color: var(--sababu);
+}
+.ukurasa-juu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--sababu);
+  color: #fff;
+  padding: 10px 22px;
+}
+.neno {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.neno span { color: var(--njano); }
+nav { display: flex; gap: 14px; flex: 1; }
+nav a {
+  color: #d7e0f0;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+nav a:hover { background: rgba(255,255,255,.12); color: #fff; }
+.mtumiaji { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.toka {
+  background: var(--nyekundu);
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+main { max-width: 1000px; margin: 26px auto; padding: 0 18px; }
+h1 { font-size: 24px; margin-bottom: 16px; }
+h2 { font-size: 18px; margin: 18px 0 10px; }
+.kadi, .kadi-kidogo {
+  background: #fff;
+  border: 1px solid var(--mpaka);
+  border-radius: 10px;
+  padding: 18px;
+}
+.kadi-kidogo {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.kadi-kidogo div b { display: block; font-size: 18px; margin-top: 4px; }
+.lebo { font-size: 12px; color: #667; text-transform: uppercase; }
+.mstari { display: flex; gap: 18px; flex-wrap: wrap; }
+.nusu { flex: 1; min-width: 280px; }
+.ingia-dirisha { max-width: 420px; margin: 8vh auto; }
+.ingia-kadi h1 { margin-bottom: 14px; }
+label { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+input, select {
+  width: 100%;
+  padding: 9px 10px;
+  margin-top: 5px;
+  border: 1px solid var(--mpaka);
+  border-radius: 6px;
+  font-size: 15px;
+}
+button, .ongeza-kitufe {
+  display: inline-block;
+  background: var(--njano);
+  border: 0;
+  color: var(--sababu);
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover { filter: brightness(.95); }
+.ongeza-kitufe { float: right; font-size: 14px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--mpaka);
+  border-radius: 10px;
+  overflow: hidden;
+}
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--mpaka); }
+th { background: var(--sababu); color: #fff; font-size: 13px; }
+tr:last-child td { border-bottom: 0; }
+tr:hover td { background: #f3f7ff; }
+.ala {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.ala.reducing { background: #e6f7ee; color: var(--kijani); }
+.ala.flat { background: #fff7e0; color: #a06a00; }
+.ujumbe {
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.ujumbe.nafuu { background: #e6f7ee; color: var(--kijani); }
+.ujumbe.hitilafu, .ujumbe.onyo { background: #fdeaea; color: var(--nyekundu); }
+.hazina { color: var(--nyekundu); font-weight: 700; }
+.hazina-row td { background: #f0fdf4; }
+.hakuna { color: #667; font-style: italic; margin-top: 10px; }
+.hakuna a { color: var(--sababu); }
+.kidokezo { font-size: 13px; color: #667; margin-top: 12px; }
+code { background: #eef2f8; padding: 1px 5px; border-radius: 4px; }
+.viti { display: flex; align-items: center; gap: 8px; }
+.viti form { display: inline; }
+button.futa, .futa-ndogo {
+  background: var(--nyekundu);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 12px;
+}
+.futa-ndogo { padding: 4px 9px; font-size: 12px; }
+.ingia-kadi { max-width: 420px; margin: 8vh auto; }
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, var(--sababu), #2d4373);
+  color: #fff;
+  border-radius: 14px;
+  padding: 56px 24px;
+  margin-bottom: 24px;
+}
+.juu-yetu {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 13px;
+  color: var(--njano);
+  margin-bottom: 8px;
+}
+.hero h1 { font-size: 44px; letter-spacing: 3px; }
+.hero h1 span { color: var(--njano); }
+.dhana {
+  max-width: 520px;
+  margin: 14px auto 0;
+  color: #cdd8ee;
+  font-size: 17px;
+}
+.kitufe-kubwa {
+  display: inline-block;
+  background: var(--njano);
+  color: var(--sababu);
+  font-weight: 800;
+  text-decoration: none;
+  padding: 13px 30px;
+  border-radius: 8px;
+  margin-top: 22px;
+}
+.kitufe-kubwa:hover { filter: brightness(.95); }
+.ramani {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.kipengele { position: relative; padding-top: 34px; }
+.alama {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--mpaka);
+}
+.kipengele h3 { font-size: 17px; margin-bottom: 8px; }
+.kipengele p { font-size: 14px; color: #445; line-height: 1.5; }
+.chini-yetu {
+  text-align: center;
+  color: #667;
+  font-size: 13px;
+  margin-top: 26px;
+}

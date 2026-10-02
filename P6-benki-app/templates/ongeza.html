@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block kichwa %}Ongeza Mkopo{% endblock %}
+{% block yaliyomo %}
+<div class="kadi">
+  <h1>Mkopo Mpya</h1>
+  <form method="post">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    <label>Jina la mteja
+      <input type="text" name="jina" required>
+    </label>
+    <label>Simu (chagua ya kipekee)
+      <input type="text" name="simu" placeholder="07...">
+    </label>
+    <div class="mstari">
+      <label>Kiasi (TZS)
+        <input type="number" name="kiasi" min="1" step="1" required>
+      </label>
+      <label>Riba % (mwaka)
+        <input type="number" name="riba" min="0" max="100" step="0.1" required>
+      </label>
+      <label>Miezi
+        <input type="number" name="miezi" min="1" max="360" required>
+      </label>
+    </div>
+    <label>Aina ya riba
+      <select name="aina">
+        <option value="reducing">Reducing (rinunua deni - inapungua)</option>
+        <option value="flat">Flat (jumla fixed)</option>
+      </select>
+    </label>
+    <button type="submit">Hifadhi</button>
+  </form>
+</div>
+{% endblock %}

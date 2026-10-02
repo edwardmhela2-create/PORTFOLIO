@@ -1,0 +1,320 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #1f2a37;
+  --muted: #6b7280;
+  --accent: #0f766e;
+  --accent-2: #0d9488;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --line: #e5e7eb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 5%;
+  background: var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.accent {
+  color: var(--accent-2);
+}
+
+.viungo {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+}
+
+.viungo a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.viungo a:hover {
+  color: #fff;
+}
+
+.hero {
+  text-align: center;
+  padding: 70px 5% 50px;
+  background: linear-gradient(135deg, var(--ink), var(--accent));
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin: 8px 0;
+}
+
+.wazo {
+  max-width: 680px;
+  margin: 0 auto 22px;
+  color: #d1fae5;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero .small {
+  color: #99f6e4;
+}
+
+.vitufe {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent-2);
+  color: #fff;
+  padding: 11px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 2px solid var(--accent-2);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: #fff;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+section {
+  padding: 46px 5% 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+  border-left: 6px solid var(--accent-2);
+  padding-left: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.vichujio {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.kichujio {
+  border: 2px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  padding: 7px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.kichujio.kilichochaguliwa {
+  background: var(--accent);
+  color: #fff;
+}
+
+.projekti .alama {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.alama.done {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.alama.coming {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.projekti .teknolojia {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.hatua-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.hatua {
+  padding: 9px 12px;
+  border-left: 4px solid #d1d5db;
+  margin-bottom: 8px;
+  font-size: 14px;
+  background: #f9fafb;
+  border-radius: 0 8px 8px 0;
+}
+
+.hatua.done-item {
+  border-left-color: var(--accent-2);
+  background: #ecfdf5;
+}
+
+.wasiliana-mkato {
+  margin-top: 14px;
+}
+
+.fungua-dokezo {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.projekti {
+  cursor: pointer;
+}
+
+.projekti:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  transition: 0.15s;
+}
+
+.sakafu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  z-index: 50;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.sakafu.imefunguliwa {
+  display: flex;
+}
+
+.ndani {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 560px;
+  width: 100%;
+  padding: 26px;
+  position: relative;
+}
+
+.ndani h3 {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.ndani p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.fungua-x {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.fungua-x:hover {
+  color: var(--ink);
+}
+
+footer {
+  background: var(--ink);
+  color: #9ca3af;
+  text-align: center;
+  padding: 18px;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .viungo {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}

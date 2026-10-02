@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block kichwa %}Badilisha Nenosiri{% endblock %}
+{% block yaliyomo %}
+<div class="kadi ingia-kadi">
+  <h1>Badilisha Nenosiri</h1>
+  <form method="post">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    <label>Nenosiri la zamani
+      <input type="password" name="zamani" required>
+    </label>
+    <label>Nenosiri jipya (herufi 6+)
+      <input type="password" name="jipya" required minlength="6">
+    </label>
+    <label>Liahidi nenosiri jipya
+      <input type="password" name="rudia" required minlength="6">
+    </label>
+    <button type="submit">Badilisha</button>
+  </form>
+  <p class="kidokezo">Linahifadhiwa kama <b>hash + salt</b> (si maandishi!)</p>
+</div>
+{% endblock %}

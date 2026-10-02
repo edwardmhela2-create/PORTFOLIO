@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block kichwa %}Ingia{% endblock %}
+{% block yaliyomo %}
+<h1>Ingia kwenye Duka la Kwanza</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Ingia</button>
+</form>
+<p class="kidokezo">Majaribio: admin/duka123 &middot; hassan/muuz123 (muuzaji) &middot;
+amina/kinu123 (mnunuzi)</p>
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DATA-1ANALYST | IT Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <span class="logo">DATA<span class="accent">ANALYST</span></span>
+      <ul class="viungo">
+        <li><a href="#nyumbani">Nyumbani</a></li>
+        <li><a href="#ujuzi">Ujuzi</a></li>
+        <li><a href="#miradi">Miradi</a></li>
+        <li><a href="#ramani">Ramani</a></li>
+        <li><a href="#wasiliana">Wasiliana</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="nyumbani" class="hero">
+      <p class="small">Karibu kwenye portfolio yangu</p>
+      <h1>Jina Lako Hapa</h1>
+      <p class="wazo">Mtaalamu wa TEHAMA: usalama wa mtandao, mitandao ya kompyuta,
+        Python, database, Docker, na data/AI &mdash; nikijenga miradi halisi
+        kwa kila ujuzi ninoujifunza.</p>
+      <div class="vitufe">
+        <a class="btn" href="#miradi">Ona Miradi</a>
+        <a class="btn btn-outline" href="#wasiliana">Wasiliana</a>
+      </div>
+    </section>
+
+    <section id="ujuzi">
+      <h2>Ujuzi Wangu</h2>
+      <div class="grid">
+        <div class="card"><h3>Kompyuta na CLI</h3><p>Maunzi, kazi za msingi,
+          PowerShell/CMD, utatuzi wa hitilafu.</p></div>
+        <div class="card"><h3>Mitandao</h3><p>IP/Porti/DNS/DHCP, uchambuzi wa
+          ISP, firewall, port scan (P2).</p></div>
+        <div class="card"><h3>Python</h3><p>Programu, validation, SQLite,
+          CLI, modules, pytest (P3).</p></div>
+        <div class="card"><h3>Web (HTML/CSS/JS)</h3><p>Vyurasa vinavyostahili
+          (responsive), DOM, kuratibu (hii tovuti ni P4!).</p></div>
+        <div class="card"><h3>SQL na Database</h3><p>CREATE/SELECT, JOIN,
+          GROUP BY, maswali/queries (P3 hoji).</p></div>
+        <div class="card"><h3>Usalama</h3><p>Hashing, firewall, scanner,
+          ransomware demo, kufuatilia milango (3.1 + P2).</p></div>
+        <div class="card"><h3>Cloud na Docker</h3><p>Linux msingi, Flask,
+          Dockerfile, image/container, port mapping (3.2).</p></div>
+        <div class="card"><h3>Data na AI</h3><p>Pandas, ML (RandomForest),
+          LLM/Ollama (3.3).</p></div>
+      </div>
+    </section>
+
+    <section id="miradi">
+      <h2>Miradi (Portfolio)</h2>
+      <div class="vichujio">
+        <button class="kichujio" data-kichujio="zote">Zote</button>
+        <button class="kichujio kilichochaguliwa" data-kichujio="done">Zimekamilika</button>
+        <button class="kichujio" data-kichujio="coming">Zinakuja</button>
+      </div>
+      <div id="projects" class="grid"></div>
+    </section>
+
+    <section id="ramani">
+      <h2>Ramani ya Masomo</h2>
+      <div class="hatua-box">
+        <div class="hatua done-item">Ngazi ya 1 &mdash; Kompyuta, CLI, mitandao msingi</div>
+        <div class="hatua done-item">Ngazi ya 2 &mdash; Python, HTML/CSS/JS, SQL, Flask</div>
+        <div class="hatua done-item">3.1 Usalama &mdash; firewall, hashing, scanner</div>
+        <div class="hatua done-item">3.2 Cloud/Docker &mdash; Linux, Flask, containers</div>
+        <div class="hatua done-item">3.3 AI &mdash; Pandas, ML, LLM (Ollama)</div>
+        <div class="hatua done-item">Portfolio P1 &rarr; P4 (unaona hapa!)</div>
+        <div class="hatua done-item">P5 &rarr; P9 &mdash; database, app, security, ML</div>
+        <div class="hatua done-item">P10 &rarr; P12 &mdash; mradi makubwa matatu: Benki 360, Ofisi 360, Duka la Kwanza (Django)</div>
+        <div class="hatua">Vyeti na PPRA &mdash; Ngazi ya 4</div>
+        <div class="hatua">Vyeti &mdash; PPRA ICT na zingine (Ngazi ya 4)</div>
+      </div>
+    </section>
+
+    <section id="wasiliana">
+      <h2>Wasiliana</h2>
+      <div class="grid">
+        <div class="card"><h3>Baikia</h3><p>edwardmhela2@gmail.com</p></div>
+        <div class="card"><h3>GitHub</h3><p>github.com/mtumiaji wako (baada ya P4)</p></div>
+        <div class="card"><h3>LinkedIn</h3><p>linkedin.com/in/mtumiaji wako</p></div>
+      </div>
+      <p class="small">Tafadhali weka taarifa zako halisi kwenye faili hii (index.html).</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="mwaka"></span> DATA-1ANALYST &mdash; imetengenezwa kwa
+      HTML, CSS na JavaScript (Portfolio P4)</p>
+  </footer>
+
+  <div id="dirisha" class="sakafu">
+    <div class="ndani">
+      <button id="fungua-funga" class="fungua-x" aria-label="Funga">&times;</button>
+      <div id="dirisha-maadhi"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

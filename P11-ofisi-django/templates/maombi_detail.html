@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block kichwa %}Maombi #{{ m.pk }}{% endblock %}
+{% block yaliyomo %}
+<h1>Maombi #{{ m.pk }}
+  <span class="alama alama-{{ m.hali }}">{{ m.get_hali_display }}</span>
+</h1>
+<table class="maudhui">
+  <tr><th>Aina</th><td>{{ m.get_aina_display }}</td></tr>
+  <tr><th>Mombaji</th><td>{{ m.mhusika.username }}</td></tr>
+  <tr><th>Imeandikwa</th><td>{{ m.imetengenezwa|date:"d/m/Y H:i" }}</td></tr>
+  {% if m.imewasilishwa %}
+  <tr><th>Imewasilishwa</th><td>{{ m.imewasilishwa|date:"d/m/Y H:i" }}</td></tr>
+  {% endif %}
+  {% if m.imeamuliwa %}
+  <tr><th>Imeamuliwa na</th><td>{{ m.meneja.username }}
+    <i>&mdash; {{ m.maoni|default:"(hakuna maoni)" }}</i></td></tr>
+  {% endif %}
+  <tr><th>Maelezo</th><td>{{ m.maelezo|linebreaksbr }}</td></tr>
+</table>
+
+{% if ni_mwombaji and m.hali == "rasimu" %}
+<div class="vitendo">
+  <form method="post" action="{% url 'maombi_wasilisha' m.pk %}">
+    {% csrf_token %}
+    <button type="submit" class="btn">Wasilisha kwa meneja</button>
+  </form>
+  <form method="post" action="{% url 'maombi_futa' m.pk %}"
+        onsubmit="return confirm('Futa rasimu hili?');">
+    {% csrf_token %}
+    <button type="submit" class="hatari">Futa</button>
+  </form>
+</div>
+{% endif %}
+
+{% if ni_meneja and m.hali == "imewasilishwa" %}
+<form method="post" action="{% url 'maombi_kagua' m.pk %}"
+      class="fomu-kubwa kagua">
+  <h3>Kagua maombi haya</h3>
+  {% csrf_token %}
+  {{ fomu_kagua.as_p }}
+  <button type="submit" class="btn kijani" name="amri"
+          value="idhini">Idhinisha</button>
+  <button type="submit" class="hatari" name="amri"
+          value="kataa">Kataa</button>
+</form>
+{% endif %}
+
+<h2>Kumbukumbu (audit trail)</h2>
+<table>
+  <tr><th>Tarehe</th><th>Hatua</th><th>Maelezo</th><th>Alifanya</th></tr>
+  {% for k in m.kumbukumbu.all %}
+  <tr>
+    <td>{{ k.tarehe|date:"d/m/Y H:i" }}</td>
+    <td>{{ k.mada }}</td>
+    <td>{{ k.maelezo }}</td>
+    <td>{{ k.alifanya.username|default:"-" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4">Hakuna kumbukumbu</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

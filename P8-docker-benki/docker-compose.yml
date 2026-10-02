@@ -1,0 +1,15 @@
+services:
+  benki:
+    build:
+      context: ..
+      dockerfile: P8-docker-benki/Dockerfile
+    image: benki-p8
+    container_name: benki-p8
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      - benki-data:/data
+    restart: unless-stopped
+
+volumes:
+  benki-data:

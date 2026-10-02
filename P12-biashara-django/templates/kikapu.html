@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block kichwa %}Kikapu changu{% endblock %}
+{% block yaliyomo %}
+<h1>Kikapu changu</h1>
+{% if vipengele %}
+<table class="jedwali">
+  <tr>
+    <th>Bidhaa</th><th>Bei</th><th>Idadi</th><th>Jumla</th><th></th>
+  </tr>
+  {% for v in vipengele %}
+  <tr>
+    <td><a href="{% url 'bidhaa_maelezo' v.bidhaa.pk %}">{{ v.bidhaa.jina }}</a>
+        <span class="kidokezo">(stoo: {{ v.bidhaa.stoo }})</span></td>
+    <td class="sarafu">TZS {{ v.bidhaa.bei|floatformat:0 }}</td>
+    <td>
+      <form method="post" action="{% url 'kikapu_badilisha' v.pk %}" class="fomu-idadi">
+        {% csrf_token %}
+        <input type="number" name="idadi" value="{{ v.idadi }}" min="1" max="{{ v.bidhaa.stoo }}">
+        <button type="submit" class="btn kidogo">Badilisha</button>
+      </form>
+    </td>
+    <td class="sarafu">TZS {{ v.jumla|floatformat:0 }}</td>
+    <td>
+      <form method="post" action="{% url 'kikapu_futa' v.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn hatari kidogo">Futa</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <th colspan="3">Jumla ya kikapu</th>
+    <th class="sarafu">TZS {{ jumla|floatformat:0 }}</th><th></th>
+  </tr>
+</table>
+<p class="hatua-malipo">
+  <a class="btn" href="{% url 'lipa' %}">Lipa Sasa &rarr;</a>
+  <a href="{% url 'bidhaa_orodha' %}">Endelea kununua</a>
+</p>
+{% else %}
+<p class="kidokezo">Kikapu ni tupu. <a href="{% url 'bidhaa_orodha' %}">Angalia bidhaa</a></p>
+{% endif %}
+{% endblock %}

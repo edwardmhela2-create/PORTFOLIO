@@ -1,0 +1,42 @@
+{% extends "base.html" %}{% load vikwazo %}
+{% block kichwa %}Barua{% endblock %}
+{% block yaliyomo %}
+<h1>Daftari la barua</h1>
+<form method="get" class="utafutaji">
+  <input type="search" name="q" value="{{ request.GET.q }}"
+         placeholder="Tafuta namba/ichwa/mhusika...">
+  <button type="submit">Tafuta</button>
+  {% if request.GET.q %}<a href="{% url 'barua' %}">Ondoa</a>{% endif %}
+</form>
+{% yupo_jukumu user "rejista" as aweza_rejista %}
+{% if aweza_rejista %}
+<a class="btn" href="{% url 'barua_mpya' %}">+ Rejista barua</a>
+{% endif %}
+<table>
+  <tr><th>Namba</th><th>Aina</th><th>Ichwa</th><th>Mhusika</th>
+      <th>Tarehe</th><th>Faili</th></tr>
+  {% for b in barua %}
+  <tr>
+    <td><code>{{ b.namba }}</code></td>
+    <td>{{ b.get_aina_display }}</td>
+    <td>{{ b.kichwa }}</td>
+    <td>{{ b.mhusika }}</td>
+    <td>{{ b.tarehe|date:"d/m/Y" }}</td>
+    <td>{% if b.faili %}<a href="{{ b.faili.url }}" target="_blank">Fungua</a>{% else %}-{% endif %}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="6">Hakuna barua bado</td></tr>
+  {% endfor %}
+</table>
+{% if page_obj.has_other_pages %}
+<div class="ukurasa">
+  {% if page_obj.has_previous %}
+  <a class="btn ndogo" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&amp;q={{ request.GET.q }}{% endif %}">&larr; Nyuma</a>
+  {% endif %}
+  <span>Ukurasa {{ page_obj.number }} kati ya {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}
+  <a class="btn ndogo" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&amp;q={{ request.GET.q }}{% endif %}">Mbele &rarr;</a>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

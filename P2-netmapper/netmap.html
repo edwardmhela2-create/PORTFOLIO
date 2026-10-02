@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="sw"><head><meta charset="UTF-8">
+<title>NETMAPPER</title><style>
+ body{font-family:'Segoe UI',Arial;background:#f4f6f9;margin:0;padding:24px;color:#2c3e50}
+ .wrap{max-width:1050px;margin:auto}
+ h1{background:linear-gradient(135deg,#16a085,#2c3e50);color:#fff;padding:20px 26px;border-radius:10px;margin:0 0 6px}
+ .sub{color:#7f8c8d;margin-bottom:18px}
+ .stats{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+ .pill{background:#fff;border-radius:10px;padding:10px 18px;box-shadow:0 2px 6px rgba(0,0,0,.08);font-weight:700}
+ table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-bottom:16px}
+ th{background:#2c3e50;color:#fff;padding:9px;text-align:left;font-size:13px}
+ td{padding:8px 9px;border-bottom:1px solid #ecf0f1;font-size:14px}
+ tr:nth-child(even) td{background:#f9f9f9}
+ .warn{background:#fff3cd;border-left:6px solid #f39c12;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:10px}
+ .info{background:#e8f6f3;border-left:6px solid #16a085;padding:10px 14px;border-radius:8px;font-size:13px}
+ h3{margin:18px 0 8px}
+ footer{text-align:center;color:#95a5a6;font-size:12px;margin-top:16px}
+</style></head><body><div class="wrap">
+<h1>&#128506; NETMAPPER v1.1</h1>
+<div class="sub">192.168.118.0/24 &mdash; iliyotengenezwa: 29/09/2026 03:51</div>
+<div class="stats">
+  <div class="pill">IP zilizopigwa: 254</div>
+  <div class="pill" style="color:#27ae60">Zilizojibu: 2</div>
+  <div class="pill" style="color:#e74c3c">Zenye onyo: 1</div>
+  <div class="pill">Muda: 20.6s</div>
+</div>
+
+<div class="warn">&#9888; <b>MUHTASARI WA MENEJA:</b> Vifaa 2 vipo mtandaoni;
+1 vina huduma zinazohitaji ukaguzi (RDP/SMB/FTP/TELNET wazi).
+Angalia jedwali hapa chini.</div>
+
+<table><tr><th>IP</th><th>MAC</th><th>Jina (hostname)</th><th>Huduma (port + jina)</th>
+<th>Latency</th><th>Hali</th><th>Maelezo ya usalama</th></tr>
+    <tr><td>192.168.118.1</td><td style="font-family:monospace">82-fd-8a-6e-c2-ce</td><td>outdoor.cpe</td>
+      <td>80 (HTTP), 443 (HTTPS)</td><td>1582 ms</td>
+      <td style="color:#27ae60;font-weight:700">&#9679;</td><td>Hakuna huduma hatari iliyopatikana</td></tr>
+    <tr><td>192.168.118.10</td><td style="font-family:monospace">-</td><td>DATA-1ANALYST</td>
+      <td>135 (MSRPC), 139 (NetBIOS), 445 (SMB)</td><td>2058 ms</td>
+      <td style="color:#f39c12;font-weight:700">&#9679;</td><td>ZINGATIA: SMB wazi</td></tr></table>
+
+<div class="info"><b>MAANA YA PORTI (legend):</b>
+<table style="width:auto;margin-top:6px"><tr><th style="padding:5px">Porti</th><th style="padding:5px">Huduma</th></tr><tr><td>21</td><td>FTP</td></tr><tr><td>22</td><td>SSH</td></tr><tr><td>23</td><td>TELNET</td></tr><tr><td>80</td><td>HTTP</td></tr><tr><td>135</td><td>MSRPC</td></tr><tr><td>139</td><td>NetBIOS</td></tr><tr><td>443</td><td>HTTPS</td></tr><tr><td>445</td><td>SMB</td></tr><tr><td>3389</td><td>RDP</td></tr><tr><td>8080</td><td>HTTP-ALT</td></tr></table>
+</div>
+
+<div class="warn"><b>ETHICS:</b> Chombo cha ukaguzi - tumia tu kwenye mtandao wako
+au uliopewa RUHUSA. Kutafuta mtandao wa mwingeni ni kinyume cha sheria.</div>
+
+<footer>NETMAPPER v1.1 &mdash; PORTFOLIO P2 &mdash; Python socket + ThreadPool + ARP</footer>
+</div></body></html>

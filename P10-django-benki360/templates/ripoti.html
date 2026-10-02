@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block kichwa %}Ripoti{% endblock %}
+{% block yaliyomo %}
+<h1>Ripoti ya wateja</h1>
+<table>
+  <tr><th>#</th><th>Mteja</th><th>Akaunti</th><th>Salio (Tsh)</th>
+      <th>Deni la mkopo</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ r.w.jina }} <small>({{ r.w.simu }})</small></td>
+    <td>{{ r.idadi_akaunti }}</td>
+    <td class="sarafu">{{ r.salio|floatformat:2 }}</td>
+    <td class="sarafu">{{ r.deni|floatformat:2 }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Hakuna data</td></tr>
+  {% endfor %}
+  <tr class="jumla">
+    <td colspan="3"><b>JUMLA</b></td>
+    <td class="sarafu"><b>{{ jumla|floatformat:2 }}</b></td>
+    <td class="sarafu"><b>{{ deni_jumla|floatformat:2 }}</b></td>
+  </tr>
+</table>
+<p class="kidokezo">Ethics: takwimu hizi ni za <b>ndani tu</b> &mdash;
+hazitumwi kwenye server za nje. Ripoti inaonekana na admin/mhasibu tu.</p>
+{% endblock %}

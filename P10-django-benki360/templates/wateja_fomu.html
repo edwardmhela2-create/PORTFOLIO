@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block kichwa %}{{ kichwa }}{% endblock %}
+{% block yaliyomo %}
+<h1>{{ kichwa }}</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Hifadhi</button>
+  <a href="javascript:history.back()">Rudi</a>
+</form>
+{% endblock %}

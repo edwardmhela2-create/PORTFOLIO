@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block kichwa %}Kumbukumbu{% endblock %}
+{% block yaliyomo %}
+<h1>Kumbukumbu za mfumo (audit trail)</h1>
+<table>
+  <tr><th>Tarehe</th><th>Hatua</th><th>Maelezo</th><th>Alifanya</th></tr>
+  {% for k in kumbukumbu %}
+  <tr>
+    <td>{{ k.tarehe|date:"d/m/Y H:i" }}</td>
+    <td>{{ k.mada }}{% if k.maombi %} <a href="{% url 'maombi_maelezo' k.maombi.pk %}">#{{ k.maombi.pk }}</a>{% endif %}</td>
+    <td>{{ k.maelezo }}</td>
+    <td>{{ k.alifanya.username|default:"-" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4">Hakuna kumbukumbu</td></tr>
+  {% endfor %}
+</table>
+<p class="kidokezo">Kumbukumbu haziwezi kufutwa kutoka kwa UI -
+zimehifadhiwa kwa ajili ya ukaguzi (accountability).</p>
+{% endblock %}

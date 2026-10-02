@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block kichwa %}Wateja{% endblock %}
+{% block yaliyomo %}
+<h1>Orodha ya Wateja</h1>
+{% if wateja %}
+<table>
+  <tr><th>ID</th><th>Jina</th><th>Simu</th><th>Mikopo</th><th>Jumla</th>
+    <th>Kuingia</th>{% if anaweza_futa %}<th></th>{% endif %}</tr>
+  {% for w in wateja %}
+  <tr>
+    <td>{{ w.id }}</td>
+    <td>{{ w.jina }}</td>
+    <td>{{ w.simu or '—' }}</td>
+    <td>{{ w.mikopo }}</td>
+    <td>{{ w.jumla|sarafu }}</td>
+    <td>{{ w.tangu }}</td>
+    {% if anaweza_futa %}
+    <td>
+      {% if w.mikopo > 0 %}
+      <span class="kidokezo">futa mikopo kwanza</span>
+      {% else %}
+      <form method="post" action="{{ url_for('futa_mteja', mteja_id=w.id) }}"
+            onsubmit="return confirm('Futa mteja huyu?')">
+        <input type="hidden" name="_csrf" value="{{ csrf }}">
+        <button class="futa-ndogo" type="submit">Futa</button>
+      </form>
+      {% endif %}
+    </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+<p class="kidokezo">Jaribu kufuta mteja aliyeko na mikopo → utaona
+  <b>RESTRICT</b> ya database ikikataa (admin tu anaweza kufuta).</p>
+{% else %}
+<p class="hakuna">Hakuna wateja bado.</p>
+{% endif %}
+{% endblock %}

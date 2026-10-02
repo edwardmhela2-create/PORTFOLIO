@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block kichwa %}Ingia{% endblock %}
+{% block yaliyomo %}
+<div class="kadi ingia-kadi">
+  <h1>Ingia kwenye Benki</h1>
+  <form method="post">
+    <input type="hidden" name="_csrf" value="{{ csrf }}">
+    <label>Jina la mtumiaji
+      <input type="text" name="jina" required autofocus>
+    </label>
+    <label>Nenosiri
+      <input type="password" name="nenosiri" required>
+    </label>
+    <button type="submit">Ingia</button>
+  </form>
+  <p class="kidokezo">Demo: <code>admin/benki123</code> ·
+    <code>mpokeaji/pokea123</code> · <code>mhasibu/hesabu123</code></p>
+</div>
+{% endblock %}

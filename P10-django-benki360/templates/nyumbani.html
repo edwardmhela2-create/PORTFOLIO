@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block kichwa %}Benki 360 - Nyumbani{% endblock %}
+{% block yaliyomo %}
+{% if user.is_authenticated %}
+<h1>Karibu, {{ user.username }}</h1>
+<div class="kadi-wrap">
+  <div class="kadi"><b>{{ dashibodi.wateja }}</b><span>Wateja</span></div>
+  <div class="kadi"><b>{{ dashibodi.akaunti }}</b><span>Akaunti</span></div>
+  <div class="kadi"><b>{{ dashibodi.salio_jumla|floatformat:0 }}</b><span>Salio jumla (Tsh)</span></div>
+  <div class="kadi"><b>{{ dashibodi.miamala }}</b><span>Miamala</span></div>
+  <div class="kadi"><b>{{ dashibodi.mikopo_hai }}</b><span>Mikopo hai</span></div>
+</div>
+<p class="anaza">Anza: <a href="{% url 'wateja_orodha' %}">Wateja</a> &middot;
+<a href="{% url 'fedha' %}">Kuweka/kutoa fedha</a> &middot;
+<a href="{% url 'jedwali' %}">Jedwali la miamala</a></p>
+{% else %}
+<section class="hero">
+  <h1>Benki 360</h1>
+  <p>Mfumo wa benki uliojengwa kwa <b>Django</b>: wateja, akaunti,
+  fedha, mikopo na ripoti &mdash; kwa majukumu matatu
+  (admin, mpokeaji, mhasibu).</p>
+  <a class="btn" href="{% url 'ingia' %}">Ingia kwenye mfumo</a>
+</section>
+<ul class="vipengele">
+  <li><b>Usalama:</b> Django CSRF kiotomatiki, kadi za majukumu,
+  nenosiri lililofichwa (PBKDF2)</li>
+  <li><b>ORM:</b> modeli + migrations + CASCADE (mteja akifutwa,
+  akaunti zake zinafuata)</li>
+  <li><b>Admin ya Kiswahili:</b> <code>/admin/</code> &mdash; Django
+  inazungumza Kiswahili!</li>
+  <li><b>Mitihani:</b> pytest-django inapima kila kitu</li>
+</ul>
+{% endif %}
+{% endblock %}

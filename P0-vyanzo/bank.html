@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Benki ya Mkopo</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f4f8; margin: 40px; }
+        h1 { color: #0b5394; }
+        .kadi { background: white; padding: 25px; border-radius: 10px;
+        border-left: 5px solid #0b5394; max-width: 500px; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        input { width: 95%; padding: 8px; margin-top: 4px; border: 1px solid #ccc;
+        border-radius: 5px; }
+        button { background-color: #0b5394; color: white; padding: 12px 25px;
+        an border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #073763; }
+        #matokeo { margin-top: 15px; padding: 12px; background: #e8f5e9;
+                   border-radius: 5px; display: none; }
+        .hitilafu { background: #fdecea; color: #b71c1c; display: block; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 6px; text-align: right; }
+        th { background-color: #0b5394; color: white; }
+    </style>
+</head>
+<body>
+    <h1>🏦 Benki ya Mkopo</h1>
+    <div class="kadi">
+        <label>Kiasi cha mkopo (TZS):</label>
+        <input type="text" id="kiasi" placeholder="mfano: 1000000">
+
+        <label>Riba kwa mwaka (%):</label>
+        <input type="text" id="riba" placeholder="mfano: 15">
+
+        <label>Muda (miezi):</label>
+        <input type="text" id="miezi" placeholder="mfano: 24">
+
+        <button onclick="hesabu()">HESABU</button>
+
+        <div id="matokeo"></div>
+    </div>
+
+    <script>
+        function hesabu() {
+            let matokeo = document.getElementById("matokeo");
+
+            // 1. PATA input (kama try/except ya Python)
+            let kiasi = parseFloat(document.getElementById("kiasi").value);
+            let riba = parseFloat(document.getElementById("riba").value);
+            let miezi = parseInt(document.getElementById("miezi").value);
+
+            if (isNaN(kiasi) || isNaN(riba) || isNaN(miezi)) {
+                matokeo.className = "hitilafu";
+                matokeo.style.display = "block";
+                matokeo.innerHTML = "❌ Hitilafu: Weka namba sahihi tu!";
+                return;   // TOKA (kama break/continue)
+            }
+            if (kiasi <= 0 || miezi <= 0) {
+                matokeo.className = "hitilafu";
+                matokeo.style.display = "block";
+                matokeo.innerHTML = "❌ Hitilafu: Kiasi na miezi lazima ziwe zaidi ya 0";
+                return;
+            }
+
+            // 2. HESABU (sawa na Python yako)
+            let jumlaRiba = kiasi * riba / 100 * (miezi / 12);
+            let jumla = kiasi + jumlaRiba;
+            let kilaMwezi = jumla / miezi;
+            let ribaMwezi = jumlaRiba / miezi;
+            let marejesho = kilaMwezi - ribaMwezi;
+
+            // 3. JEDWALI (for loop badala ya while)
+            let jedwali = "<table><tr><th>Mwezi</th><th>Marejesho</th><th>Salio</th></tr>";
+            let salio = kiasi;
+            for (let mwezi = 1; mwezi <= miezi; mwezi++) {
+                salio = salio - marejesho;
+                if (salio < 1) salio = 0;
+                jedwali += "<tr><td>" + mwezi + "</td><td>" +
+                    marejesho.toLocaleString() + "</td><td>" +
+                    Math.round(salio).toLocaleString() + "</td></tr>";
+            }
+            jedwali += "</table>";
+
+            // 4. ONYESHA
+            matokeo.className = "";
+            matokeo.style.display = "block";
+            matokeo.innerHTML =
+                "<b>Riba ya jumla:</b> " + jumlaRiba.toLocaleString() + " TZS<br>" +
+                "<b>Jumla ya deni:</b> " + jumla.toLocaleString() + " TZS<br>" +
+                "<b>Malipo kila mwezi:</b> " + Math.round(kilaMwezi).toLocaleString() + " TZS" +
+                jedwali;
+        }
+    </script>
+</body>
+</html>

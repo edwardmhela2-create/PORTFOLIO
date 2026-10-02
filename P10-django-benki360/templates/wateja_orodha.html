@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% load vikwazo %}
+{% block kichwa %}Wateja{% endblock %}
+{% block yaliyomo %}
+<h1>Wateja ({{ wateja|length }})</h1>
+<form method="get" class="utafutaji">
+  <input type="search" name="q" value="{{ q }}"
+         placeholder="Tafuta jina au simu...">
+  <button type="submit">Tafuta</button>
+  {% if q %}<a href="{% url 'wateja_orodha' %}">Ondoa</a>{% endif %}
+</form>
+{% yupo_jukumu user "admin" "mpokeaji" as aweza_ongeza %}
+{% if aweza_ongeza %}
+<a class="btn" href="{% url 'wateja_ongeza' %}">+ Sajili mteja</a>
+{% endif %}
+<table>
+  <tr><th>Jina</th><th>Simu</th><th>Anwani</th><th>Sajiliwa</th>
+      <th>Mashtendo</th></tr>
+  {% for m in wateja %}
+  <tr>
+    <td>{{ m.jina }}</td>
+    <td>{{ m.simu }}</td>
+    <td>{{ m.anwani }}</td>
+    <td>{{ m.imesajiliwa|date:"d/m/Y" }}</td>
+    <td>
+      {% yupo_jukumu user "admin" as aweza_futa %}
+      {% if aweza_futa %}
+      <form method="post" action="{% url 'wateja_futa' m.pk %}"
+            onsubmit="return confirm('Futa {{ m.jina }}? Akaunti zake na miamala yake YOTE itafuatwa!');">
+        {% csrf_token %}
+        <button type="submit" class="hatari">Futa</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Hakuna mteja{% if q %} kwa "{{ q }}"{% endif %}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block kichwa %}Badilisha nenosiri{% endblock %}
+{% block yaliyomo %}
+<h1>Badilisha nenosiri</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Hifadhi nenosiri jipya</button>
+</form>
+<p class="kidokezo">Django hupima nguvu ya nenosiri: urefu, urahisi
+wa kukaririwa, sio tarakimu pekee &mdash; na inalazima nenosiri la
+zamani kwanza (authn).</p>
+{% endblock %}

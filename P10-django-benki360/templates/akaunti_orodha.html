@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% load vikwazo %}
+{% block kichwa %}Akaunti{% endblock %}
+{% block yaliyomo %}
+<h1>Akaunti ({{ akaunti|length }})</h1>
+{% yupo_jukumu user "admin" "mpokeaji" as aweza_fungua %}
+{% if aweza_fungua %}
+<form method="post" id="fungua" class="utafutaji">
+  {% csrf_token %}
+  <select name="wateja_pk" required
+          onchange="this.form.action='{% url 'akaunti_fungua' 0 %}'.replace('/0/','/'+this.value+'/')">
+    <option value="">Chagua mteja wa kufungua akaunti...</option>
+    {% for m in wateja %}<option value="{{ m.pk }}">{{ m.jina }} - {{ m.simu }}</option>{% endfor %}
+  </select>
+  <button type="submit">Fungua akaunti</button>
+</form>
+{% endif %}
+<table>
+  <tr><th>Namba</th><th>Mteja</th><th>Aina</th><th>Salio (Tsh)</th>
+      <th>Imefunguliwa</th></tr>
+  {% for a in akaunti %}
+  <tr>
+    <td><code>{{ a.namba }}</code></td>
+    <td>{{ a.wateja.jina }}</td>
+    <td>{{ a.get_aina_display }}</td>
+    <td class="sarafu">{{ a.salio|floatformat:2 }}</td>
+    <td>{{ a.imefunguliwa|date:"d/m/Y H:i" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Hakuna akaunti bado</td></tr>
+  {% endfor %}
+</table>
+<p class="kidokezo">Namba ya akaunti hutengenezwa kiotomatiki
+(TZ + UUID) &mdash; kama benki halisi.</p>
+{% endblock %}

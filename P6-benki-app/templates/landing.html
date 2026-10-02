@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block kichwa %}Mwanzo{% endblock %}
+{% block yaliyomo %}
+<section class="hero">
+  <p class="juu-yetu">Karibu</p>
+  <h1>BENKI<span>App</span></h1>
+  <p class="dhana">Mfumo wa benki wa kisasa: mikopo, malipo na ripoti -
+    kwa usalama wa kiwango cha benki halisi.</p>
+  <a class="kitufe-kubwa" href="{{ url_for('ingia') }}">Ingia kwenye akaunti</a>
+</section>
+
+<section class="ramani">
+  <div class="kadi kipengele">
+    <span class="alama">01</span>
+    <h3>Usalama halisi</h3>
+    <p>Nenosiri linahifadhiwa kama <b>hash + salt</b> (si maandishi),
+      kila fomu ina <b>CSRF token</b>, SQL inatumia parameters.</p>
+  </div>
+  <div class="kadi kipengele">
+    <span class="alama">02</span>
+    <h3>Roles (Authz)</h3>
+    <p>Admin, mpokeaji na mhasibu - kila mtu ana <b>ruhusa yake</b>.
+      Mtu hafanyi kile asiyoruhusiwa.</p>
+  </div>
+  <div class="kadi kipengele">
+    <span class="alama">03</span>
+    <h3>Kumbukumbu otomatiki</h3>
+    <p>Kila malipo linaingia - <b>trigger</b> ya database ndiyo inakumbuka
+      yenyewe, bila kusahau.</p>
+  </div>
+  <div class="kadi kipengele">
+    <span class="alama">04</span>
+    <h3>Hesabu sahihi</h3>
+    <p>Flat na reducing (annuity) kwa jedwali kamili ya kila mwezi -
+      kama benki halisi inavyokokotoa.</p>
+  </div>
+</section>
+
+<section class="chini-yetu">
+  <p>Flask (Python) - SQLite - Jinja2 - pytest: mradi wa P6 wa portfolio ya ICT.</p>
+</section>
+{% endblock %}

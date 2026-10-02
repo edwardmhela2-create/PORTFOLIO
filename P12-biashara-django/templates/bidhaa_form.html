@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block kichwa %}Bidhaa mpya - Duka la Kwanza{% endblock %}
+{% block yaliyomo %}
+<h1>{% if object %}Hariri {{ object.jina }}{% else %}Ongeza bidhaa mpya{% endif %}</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Hifadhi</button>
+  <a class="kidokezo" href="{% url 'bidhaa_orodha' %}">Ghairi</a>
+</form>
+{% endblock %}

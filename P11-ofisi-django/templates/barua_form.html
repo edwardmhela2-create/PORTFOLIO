@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block kichwa %}Rejista barua{% endblock %}
+{% block yaliyomo %}
+<h1>Rejista barua mpya</h1>
+<form method="post" class="fomu-kubwa" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Hifadhi</button>
+  <a href="{% url 'barua' %}">Ghairi</a>
+</form>
+<p class="kidokezo">Namba (WDA/2026/001...) hutengenezwa
+kiotomatiki. <b>Faili</b> huhifadhiwa kwenye <code>media/barua/</code>.</p>
+{% endblock %}

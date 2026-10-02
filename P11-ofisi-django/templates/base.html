@@ -1,0 +1,41 @@
+{% load static %}{% load vikwazo %}
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block kichwa %}Mfumo wa Ofisi{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'css/faili.css' %}">
+<link rel="stylesheet" href="{% static 'css/ofisi.css' %}">
+</head>
+<body>
+<header>
+  <a class="nembo" href="{% url 'nyumbani' %}">Ofisi 360</a>
+  <nav>
+  {% if user.is_authenticated %}
+    <a href="{% url 'maombi' %}">Maombi</a>
+    <a href="{% url 'barua' %}">Barua</a>
+    {% yupo_jukumu user "meneja" as ana_ripoti %}
+    {% if ana_ripoti %}
+      <a href="{% url 'ripoti' %}">Ripoti</a>
+      <a href="{% url 'kumbukumbu_orodha' %}">Kumbukumbu</a>
+    {% endif %}
+    <span class="mtumiaji">{{ user.username }}</span>
+    <form method="post" action="{% url 'toka' %}" class="fomu_toka">
+      {% csrf_token %}
+      <button type="submit">Toka</button>
+    </form>
+  {% else %}
+    <a href="{% url 'ingia' %}">Ingia</a>
+  {% endif %}
+  </nav>
+</header>
+<main>
+  {% if messages %}{% for m in messages %}
+    <div class="ujumbe ujumbe-{{ m.tags }}">{{ m }}</div>
+  {% endfor %}{% endif %}
+  {% block yaliyomo %}{% endblock %}
+</main>
+<footer>Ofisi 360 &middot; P11 (Django #2) &middot; daftari la barua + workflow ya maombi</footer>
+</body>
+</html>

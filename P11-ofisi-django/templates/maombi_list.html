@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block kichwa %}Maombi{% endblock %}
+{% block yaliyomo %}
+<h1>Maombi ({{ page_obj.paginator.count|default:maombi|length }})</h1>
+<form method="get" class="utafutaji">
+  <input type="search" name="q" value="{{ request.GET.q }}"
+         placeholder="Tafuta mombaji/aina/maelezo...">
+  <select name="hali">
+    <option value="">Hali zote</option>
+    <option value="rasimu" {% if request.GET.hali == "rasimu" %}selected{% endif %}>Rasimu</option>
+    <option value="imewasilishwa" {% if request.GET.hali == "imewasilishwa" %}selected{% endif %}>Imewasilishwa</option>
+    <option value="imeidhinishwa" {% if request.GET.hali == "imeidhinishwa" %}selected{% endif %}>Imeidhinishwa</option>
+    <option value="imekataliwa" {% if request.GET.hali == "imekataliwa" %}selected{% endif %}>Imekataliwa</option>
+  </select>
+  <button type="submit">Chuja</button>
+  {% if request.GET.q or request.GET.hali %}
+  <a href="{% url 'maombi' %}">Ondoa</a>
+  {% endif %}
+</form>
+<a class="btn" href="{% url 'maombi_mpya' %}">+ Maombi mapya</a>
+<table>
+  <tr><th>#</th><th>Aina</th><th>Mombaji</th><th>Hali</th>
+      <th>Tarehe</th></tr>
+  {% for m in maombi %}
+  <tr>
+    <td><a href="{% url 'maombi_maelezo' m.pk %}">#{{ m.pk }}</a></td>
+    <td>{{ m.get_aina_display }}</td>
+    <td>{{ m.mhusika.username }}</td>
+    <td><span class="alama alama-{{ m.hali }}">{{ m.get_hali_display }}</span></td>
+    <td>{{ m.imetengenezwa|date:"d/m/Y" }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Hakuna maombi</td></tr>
+  {% endfor %}
+</table>
+{% if page_obj.has_other_pages %}
+<div class="ukurasa">
+  {% if page_obj.has_previous %}
+  <a class="btn ndogo" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&amp;q={{ request.GET.q }}{% endif %}{% if request.GET.hali %}&amp;hali={{ request.GET.hali }}{% endif %}">&larr; Nyuma</a>
+  {% endif %}
+  <span>Ukurasa {{ page_obj.number }} kati ya {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}
+  <a class="btn ndogo" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&amp;q={{ request.GET.q }}{% endif %}{% if request.GET.hali %}&amp;hali={{ request.GET.hali }}{% endif %}">Mbele &rarr;</a>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

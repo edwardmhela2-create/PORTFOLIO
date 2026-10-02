@@ -1,0 +1,40 @@
+{% extends "base.html" %}{% load vikwazo %}
+{% block kichwa %}{{ bidhaa.jina }} - Duka la Kwanza{% endblock %}
+{% block yaliyomo %}
+<p class="anaza"><a href="{% url 'bidhaa_orodha' %}">&larr; Rudia dukani</a></p>
+<article class="bidhaa-maelezo">
+  <h1>{{ bidhaa.jina }}</h1>
+  <p class="bei-kubwa">TZS {{ bidhaa.bei|floatformat:0 }}</p>
+  <p>{{ bidhaa.maelezo }}</p>
+  <p>
+    {% if bidhaa.inauzwa %}
+      <span class="alama alama-hai">Ipo stoo: {{ bidhaa.stoo }}</span>
+    {% else %}
+      <span class="alama alama-kutoa">Imeisha stoo</span>
+    {% endif %}
+    {% for l in bidhaa.lebo.all %}<span class="alama alama-umelipa">{{ l.jina }}</span>{% endfor %}
+  </p>
+
+  {% if bidhaa.inauzwa %}
+    {% if user.is_authenticated %}
+      <form method="post" action="{% url 'kikapu_ongeza' bidhaa.pk %}" class="fomu-kubwa fomu-ndogo">
+        {% csrf_token %}
+        {{ fomu.as_p }}
+        <button type="submit" class="btn">Weka Kikapuni</button>
+      </form>
+    {% else %}
+      <p class="kidokezo"><a href="{% url 'ingia' %}">Ingia</a> ili uweze kununua bidhaa hii.</p>
+    {% endif %}
+  {% else %}
+    <p class="kidokezo">Samahani, bidhaa hii imeisha - jaribu tena baadaye.</p>
+  {% endif %}
+</article>
+
+{% yupo_jukumu user "muuzaji" as ana_kuuza %}
+{% if ana_kuuza %}
+<p class="kidokezo">
+  Mauzaji? <a href="{% url 'bidhaa_hariri' bidhaa.pk %}">Hariri</a> &middot;
+  <a href="{% url 'bidhaa_futa' bidhaa.pk %}">Futa</a>
+</p>
+{% endif %}
+{% endblock %}

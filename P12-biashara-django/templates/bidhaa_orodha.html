@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block kichwa %}Bidhaa - Duka la Kwanza{% endblock %}
+{% block yaliyomo %}
+<form method="get" class="utafutaji">
+  <input type="search" name="q" value="{{ q }}" placeholder="Tafuta bidhaa...">
+  <select name="lebo">
+    <option value="">Zote</option>
+    {% for l in lebo_zote %}
+      <option value="{{ l.jina }}" {% if l.jina == lebo_mchagua %}selected{% endif %}>{{ l.jina }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Tafuta</button>
+</form>
+
+{% if lebo_zote %}
+<p class="lebo-zaa">
+  {% for l in lebo_zote %}
+    <a class="alama {% if l.jina == lebo_mchagua %}alama-hai{% else %}alama-umelipa{% endif %}"
+       href="?lebo={{ l.jina|urlencode }}">{{ l.jina }}</a>
+  {% endfor %}
+  {% if lebo_mchagua %}<a class="alama alama-kutoa" href="?">Ondoa kichujio</a>{% endif %}
+</p>
+{% endif %}
+
+{% if bidhaa %}
+<div class="bidhaa-grid">
+  {% for b in bidhaa %}
+  <article class="bidhaa-kadi">
+    <h3><a href="{% url 'bidhaa_maelezo' b.pk %}">{{ b.jina }}</a></h3>
+    <p class="bei">TZS {{ b.bei|floatformat:0 }}</p>
+    <p class="maelezo-mafupi">{{ b.maelezo|truncatechars:70 }}</p>
+    <p>
+      {% if b.inauzwa %}
+        <span class="alama alama-hai">Ipo stoo: {{ b.stoo }}</span>
+      {% else %}
+        <span class="alama alama-kutoa">Imeisha</span>
+      {% endif %}
+      {% for l in b.lebo.all %}<span class="alama alama-umelipa">{{ l.jina }}</span>{% endfor %}
+    </p>
+    <a class="btn" href="{% url 'bidhaa_maelezo' b.pk %}">Ona zaidi</a>
+  </article>
+  {% endfor %}
+</div>
+
+{% if page_obj.has_other_pages %}
+<p class="kurasa">
+  {% if page_obj.has_previous %}
+    <a href="?q={{ q|urlencode }}&lebo={{ lebo_mchagua|urlencode }}&page={{ page_obj.previous_page_number }}">&laquo; Nyuma</a>
+  {% endif %}
+  <span class="kidokezo">Ukurasa {{ page_obj.number }} kati ya {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_next %}
+    <a href="?q={{ q|urlencode }}&lebo={{ lebo_mchagua|urlencode }}&page={{ page_obj.next_page_number }}">Mbele &raquo;</a>
+  {% endif %}
+</p>
+{% endif %}
+
+{% else %}
+<p class="kidokezo">Hakuna bidhaa iliyopatikana {% if q %}kwa "{{ q }}"{% endif %}.</p>
+{% endif %}
+{% endblock %}

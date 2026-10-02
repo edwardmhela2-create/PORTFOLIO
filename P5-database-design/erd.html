@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P5 - ERD: Mfumo wa Mikopo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Segoe UI", Arial, sans-serif; background: #f4f6f9; color: #1f2a37; padding: 24px; }
+    h1 { font-size: 26px; margin-bottom: 4px; }
+    .ndogo { color: #6b7280; font-size: 14px; margin-bottom: 20px; }
+    .ramani { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-start; }
+    .jedwali { background: #fff; border: 2px solid #0f766e; border-radius: 10px; min-width: 240px; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+    .jedwali h2 { background: #0f766e; color: #fff; font-size: 16px; padding: 9px 14px; border-radius: 8px 8px 0 0; }
+    .jedwali ul { list-style: none; padding: 10px 14px; }
+    .jedwali li { font-size: 13px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; font-family: Consolas, monospace; }
+    .jedwali li:last-child { border-bottom: none; }
+    .pk { color: #0d9488; font-weight: 700; }
+    .fk { color: #b45309; font-weight: 700; }
+    .uhusiano { align-self: center; text-align: center; font-size: 13px; color: #374151; background: #ecfdf5; border: 1px dashed #0d9488; border-radius: 8px; padding: 10px 14px; min-width: 150px; }
+    .uhusiano b { color: #0f766e; display: block; font-size: 15px; }
+    .maana { max-width: 900px; margin: 26px auto 0; background: #fff; border-left: 6px solid #0d9488; padding: 14px 18px; border-radius: 8px; font-size: 14px; line-height: 1.7; }
+    @media (max-width: 700px) { .uhusiano { min-width: auto; } }
+  </style>
+</head>
+<body>
+  <h1>P5 &mdash; ERD: Mfumo wa Mikopo na Usajili</h1>
+  <p class="ndogo">Entity Relationship Diagram (muundo wa uhusiano wa tables) &mdash; Imetengenezwa kwa HTML/CSS (bila tools ya nje)</p>
+
+  <div class="ramani">
+    <div class="jedwali">
+      <h2>wateja</h2>
+      <ul>
+        <li class="pk">PK  id</li>
+        <li>jina</li>
+        <li>simu (UNIQUE)</li>
+        <li>barua_pepe</li>
+        <li>tangu</li>
+      </ul>
+    </div>
+
+    <div class="uhusiano"><b>1 &rarr; N</b>wateja &rarr; mikopo<br>(mteja_id)<br>RESTRICT: hauwezi kufuta<br>mteja yenye mikopo</div>
+
+    <div class="jedwali">
+      <h2>mikopo</h2>
+      <ul>
+        <li class="pk">PK  id</li>
+        <li class="fk">FK  mteja_id</li>
+        <li class="fk">FK  aliyeandika_id</li>
+        <li>kiasi (&gt; 0)</li>
+        <li>riba (0&ndash;100)</li>
+        <li>miezi (1&ndash;360)</li>
+        <li>aina (flat/reducing)</li>
+        <li>tangu</li>
+      </ul>
+    </div>
+
+    <div class="uhusiano"><b>1 &rarr; N</b>mikopo &rarr; malipo<br>(mkopo_id)<br>CASCADE: malipo yanafutwa<br>pamoja na mkopo</div>
+
+    <div class="jedwali">
+      <h2>malipo</h2>
+      <ul>
+        <li class="pk">PK  id</li>
+        <li class="fk">FK  mkopo_id</li>
+        <li>kiasi (&gt; 0)</li>
+        <li>tarehe</li>
+        <li>njia (fedha/benki/m-pesa)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ramani" style="margin-top:18px">
+    <div class="jedwali">
+      <h2>watumiaji</h2>
+      <ul>
+        <li class="pk">PK  id</li>
+        <li>jina_la_mtumiaji (UNIQUE)</li>
+        <li>nenosiri_hash (sio wazi!)</li>
+        <li>jukumu (admin/mpokeaji/mhasibu)</li>
+        <li>tangu</li>
+      </ul>
+    </div>
+    <div class="uhusiano"><b>1 &rarr; N</b>watumiaji &rarr; mikopo<br>(aliyeandika_id)<br>ni nani aliingiza mkopo<br>(audit &mdash; kama logs.csv)</div>
+  </div>
+
+  <div class="maana">
+    <b>Maelezo ya muundo:</b><br>
+    &bull; <b>PK</b> (Primary Key) = kitambulisho cha kipekee kwa kila safu (kama namba ya NIDA).<br>
+    &bull; <b>FK</b> (Foreign Key) = kitambulisho cha jedwali lingine &mdash; ndicho kinachounganisha tables (uhusiano).<br>
+    &bull; <b>CHECK</b> = ulinzi wa ndani: database yenyewe inakataa kiasi hasi, riba &gt; 100, n.k. (hata kama programu imekosea!).<br>
+    &bull; <b>VIEW deni_halisi</b> = "dirisha" linaloonyesha deni bila kuandika SQL kila mara.<br>
+    &bull; <b>INDEX</b> = kamashifuti wa vitabu &mdash; maswali yanakimbia haraka.
+  </div>
+</body>
+</html>

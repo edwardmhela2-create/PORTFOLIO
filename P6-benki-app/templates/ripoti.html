@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block kichwa %}Ripoti{% endblock %}
+{% block yaliyomo %}
+<h1>Ripoti ya Benki</h1>
+
+<div class="mstari kadi-kidogo">
+  <div><span class="lebo">Idadi ya mikopo</span><b>{{ jumla.idadi }}</b></div>
+  <div><span class="lebo">Kiasi cha mikopo</span><b>{{ jumla.kiasi|sarafu }} TZS</b></div>
+  <div><span class="lebo">Deni linalodaiwa</span>
+    <b class="hazina">{{ jumla.deni|sarafu }} TZS</b></div>
+  <div><span class="lebo">Kumbukumbu (trigger)</span><b>{{ kumbukumbu }}</b></div>
+</div>
+
+<h2>Kwa mteja (GROUP BY)</h2>
+{% if kwa_mteja %}
+<table>
+  <tr><th>Mteja</th><th>Idadi</th><th>Jumla</th></tr>
+  {% for k in kwa_mteja %}
+  <tr><td>{{ k.jina }}</td><td>{{ k.idadi }}</td><td>{{ k.jumla|sarafu }}</td></tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="hakuna">Hakuna data bado.</p>
+{% endif %}
+{% endblock %}

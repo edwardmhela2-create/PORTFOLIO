@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block kichwa %}Jedwali - {{ r.mteja }}{% endblock %}
+{% block yaliyomo %}
+<h1>Jedwali la Malipo — {{ r.mteja }} <span class="ala {{ r.aina }}">{{ r.aina }}</span></h1>
+
+<div class="mstari kadi-kidogo">
+  <div><span class="lebo">Mkopo</span><b>{{ r.kiasi|sarafu }} TZS</b></div>
+  <div><span class="lebo">Riba</span><b>{{ r.riba }}% / {{ r.miezi }} miezi</b></div>
+  <div><span class="lebo">Limeolishwa</span><b>{{ r.imeolishwa|sarafu }}</b></div>
+  <div><span class="lebo">Lililobaki</span>
+    <b class="{{ 'hazina' if inayobaki <= 0 else '' }}">{{ inayobaki|sarafu }}</b></div>
+</div>
+
+<div class="mstari">
+  <div class="kadi nusu">
+    <h2>💳 Lipa</h2>
+    {% if inayobaki > 0 %}
+    {% if session.get('jukumu') in ('admin', 'mpokeaji') %}
+    <form method="post" action="{{ url_for('lipa', kopo_id=r.id) }}">
+      <input type="hidden" name="_csrf" value="{{ csrf }}">
+      <label>Kiasi
+        <input type="number" name="kiasi" min="1" step="1" max="{{ inayobaki|int }}" required>
+      </label>
+      <label>Njia
+        <select name="njia">
+          <option value="fedha">Fedha taslimu</option>
+          <option value="benki">Benki</option>
+          <option value="m-pesa">M-Pesa</option>
+        </select>
+      </label>
+      <button type="submit">Pokea Malipo</button>
+    </form>
+    <p class="kidokezo">Kila malipo → <b>trigger</b> inaandika kumbukumbu
+      kwenye <code>kumbukumbu_za_malipo</code> yenyewe.</p>
+    {% else %}
+    <p class="hakuna">Jukumu lako (<code>{{ session['jukumu'] }}</code>)
+      haliruhusu kupokea malipo.</p>
+    {% endif %}
+    {% else %}
+    <p class="hakuna">✅ Mkopo umekamilika - hakuna deni.</p>
+    {% endif %}
+  </div>
+
+  <div class="kadi nusu">
+    <h2>Muhtasari</h2>
+    <p>Jumla ya kulipa: <b>{{ m.jumla|sarafu }}</b> TZS<br>
+       Malipo kwa mwezi: <b>{{ m.malipo_mwezi|sarafu }}</b> TZS<br>
+       Riba ya jumla: <b>{{ m.riba_ya_jumla|sarafu }}</b> TZS</p>
+    {% if session.get('jukumu') == 'admin' %}
+    <form method="post" action="{{ url_for('futa_mkopo', kopo_id=r.id) }}"
+          onsubmit="return confirm('Futa mkopo huu? Malipo yake yatafutwa pia!')">
+      <input type="hidden" name="_csrf" value="{{ csrf }}">
+      <button class="futa" type="submit">Futa mkopo</button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+<h2>Jedwali kamili</h2>
+<table>
+  <tr><th>#</th><th>Malipo</th><th>Riba</th><th>Marejesho</th><th>Salio</th></tr>
+  {% for s in m.jedwali %}
+  <tr class="{{ 'hazina-row' if s.salio <= 0.5 else '' }}">
+    <td>{{ s.mwezi }}</td>
+    <td>{{ "%.0f"|format(s.malipo) }}</td>
+    <td>{{ "%.0f"|format(s.riba) }}</td>
+    <td>{{ "%.0f"|format(s.marejesho) }}</td>
+    <td>{{ "%.0f"|format(s.salio) }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

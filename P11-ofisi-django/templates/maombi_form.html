@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block kichwa %}Maombi mpya{% endblock %}
+{% block yaliyomo %}
+<h1>Andika maombi mapya</h1>
+<form method="post" class="fomu-kubwa">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn">Hifadhi rasimu</button>
+  <a href="{% url 'maombi' %}">Ghairi</a>
+</form>
+<p class="kidokezo">Baada ya kuhifadhi, boya <b>Wasilisha</b>
+kwenye ukurasa wa maelezo - rasimu pekee ndizo zinazoweza kutumwa
+au kufutwa.</p>
+{% endblock %}

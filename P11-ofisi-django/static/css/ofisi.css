@@ -1,0 +1,13 @@
+/* Nyongeza za P11: workflow chips + pagination + vitendo */
+.alama-rasimu { background: #eef2f8; color: #5b6b7d; }
+.alama-imewasilishwa { background: #fff7e0; color: #8a6a00; }
+.alama-imeidhinishwa { background: #e2f8ea; color: #1a7a43; }
+.alama-imekataliwa { background: #fdeceb; color: #c0392b; }
+.ukurasa { display: flex; gap: 12px; align-items: center;
+  justify-content: center; margin-top: 16px; }
+.btn.ndogo { padding: 5px 12px; font-size: 0.88rem; }
+.vitendo { display: flex; gap: 10px; margin: 16px 0; flex-wrap: wrap; }
+.btn.kijani { background: #27ae60; }
+.btn.kijani:hover { background: #1e8449; }
+.kagua { margin-top: 18px; border-left: 5px solid #f4b942; }
+table.maudhui td { vertical-align: top; }

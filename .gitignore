@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Data za mifumo (kila mtu anatengeneza upya kwa migrate/anza)
+*.sqlite3
+*.db
+nakala-*.db
+
+# Django
+media/
+staticfiles/
+*.log
+
+# Mazingira na OS
+.env
+.DS_Store
+Thumbs.db

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block yaliyomo %}
+<section class="hero">
+  <h1>Ofisi 360</h1>
+  <p>Mfumo wa ofisi kwa <b>Django</b>: daftari la <b>barua</b>
+  (namba + faili), <b>maombi</b> yenye workflow
+  (rasimu &rarr; imewasilishwa &rarr; idhini/kataa),
+  <b>kumbukumbu</b> za kiotomatiki (signals) na ripoti.</p>
+  <a class="btn" href="{% url 'ingia' %}">Ingia kwenye mfumo</a>
+</section>
+<ul class="vipengele">
+  <li><b>Workflow (state machine):</b> maombi yanabadilika hali
+  kwa sheria zilizowazi - hali mbaya haziwezi kutokea</li>
+  <li><b>Signals:</b> kila maombi mapya yanajirekodi yenyewe -
+  hata kama developersi wasisahau</li>
+  <li><b>Faili:</b> barua zinapakiwa (upload) na kuonyeshwa kwenye
+  <code>/media/</code></li>
+  <li><b>CSV:</b> ripoti inayopakuliwa na Excel (BOM ya Kiswahili)</li>
+</ul>
+{% endblock %}

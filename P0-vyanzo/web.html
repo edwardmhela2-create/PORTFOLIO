@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Suruwa Yangu</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #fff3cd;
+            margin: 40px;
+        }
+        h1 { color: #0b5394; }
+        .karibu {
+            background-color: #ffffff;
+            padding: 20px;
+            border-left: 5px solid #0b5394;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #0b5394;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Habari Duniani 👋</h1>
+    <div class="karibu">
+      <p>Jina langu ni Edward ninaanza kujifunza ICT kwa ajili ya PPRA.</p> 
+        <p>Hii ni safari yangu ya kwanza HTML.</p>
+        <p>Nina kujifunza: HTML, CSS na JavaScript.</p>
+        <button onclick="salimu()">Bonyeza hapa</button>
+        <p id="ujumbe"></p>
+    </div>
+
+    <script>
+        function salimu() {
+            document.getElementById("ujumbe").innerHTML = "Karibu sana! Umebonyeza kitufe ✓";
+        }
+    </script>
+</body>
+</html>

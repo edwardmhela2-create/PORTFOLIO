@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block kichwa %}Orodha ya Mikopo{% endblock %}
+{% block yaliyomo %}
+<h1>Orodha ya Mikopo <a class="ongeza-kitufe" href="{{ url_for('ongeza') }}">+ Mpya</a></h1>
+{% if mikopo %}
+<table>
+  <tr>
+    <th>ID</th><th>Mteja</th><th>Kiasi</th><th>Riba %</th><th>Miezi</th>
+    <th>Aina</th><th>Deni lililobaki</th><th></th>
+  </tr>
+  {% for m in mikopo %}
+  <tr>
+    <td>{{ m.id }}</td>
+    <td>{{ m.mteja }}</td>
+    <td>{{ m.kiasi|sarafu }}</td>
+    <td>{{ m.riba }}</td>
+    <td>{{ m.miezi }}</td>
+    <td><span class="ala {{ m.aina }}">{{ m.aina }}</span></td>
+    <td class="{{ 'hazina' if m.inayobaki <= 0 else '' }}">{{ m.inayobaki|sarafu }}</td>
+    <td class="viti">
+      <a href="{{ url_for('jedwali', kopo_id=m.id) }}">Jedwali →</a>
+      {% if session.get('jukumu') == 'admin' %}
+      <form method="post" action="{{ url_for('futa_mkopo', kopo_id=m.id) }}"
+            onsubmit="return confirm('Futa mkopo huu? Malipo yake yatafutwa pia!')">
+        <input type="hidden" name="_csrf" value="{{ csrf }}">
+        <button class="futa-ndogo" type="submit">Futa</button>
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="hakuna">Bado hakuna mikopo. Anza kwa <a href="{{ url_for('ongeza') }}">kuongeza</a>.</p>
+{% endif %}
+{% endblock %}
