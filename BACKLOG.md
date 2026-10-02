@@ -14,19 +14,23 @@ GitHub, **ili** nithibitishe ujuzi wangu bila kusema tu.
 - [x] Ramani imesasishwa (item 7 ✅)
 **Retro:** kwa nini db.sqlite3 haipaswi kuingia Git?
 
-## ⬜ Sprint 2 — Vyeti bure mtandaoni
+## ⬜ Sprint 2 — Vyeti bure mtandaoni — MPANGO UMEBADILISHWA (Okt 2026)
 **Kama** mwombaji wa PPRA, **nataka** vyeti vya bure vinavyothibitisha
 ujuzi, **ili** CV iwe na alama za kimataifa bila gharama.
-- [ ] ISC² Certified in Cybersecurity (CC) — mtihani BURE: jisajili,
-      soma kozi, panga mtihani (angalau: akaunti + ratiba)
-- [ ] Cisco Skills for All — badge ya kwanza
-      ("Introduction to Cybersecurity" au "Networking Basics")
-- [ ] freeCodeCamp — cheti kimoja (Python Scientific Computing au
-      Responsive Web Design)
+> **Ukweli (utafiti wa Okt 2026):** ISC² **1MCC imefungwa** kwa
+> wajipya (20 Mei 2026) → badala yake: **Cisco NetAcad** (bure +
+> badges). Mwongozo kamili + ratiba: `SPRINT2-VYETI.md`.
+- [x] Mwongozo wa usajili, ukweli wa vyeti 4, ratiba 60'/siku ×
+      wiki 4 — `SPRINT2-VYETI.md`
+- [ ] Cisco NetAcad — badge **2**: *Introduction to Modern AI* (6h,
+      AI post!) + *Introduction to Cybersecurity* (6h) — netacad.com
+- [ ] Kaggle micro-courses: *Intro to ML* (3h) + *Pandas* (4h) —
+      cheti: kaggle.com/learn
+- [ ] freeCodeCamp — *Data Analysis with Python*
 - [ ] Ratiba ya kujisomea: dakika 60/siku × wiki 4
 **Acceptance criteria:** alama 3 (badges/certs) + viungo vyao kwenye
-README ya PORTFOLIO. **Retro:** je, mtaala uliohitaji ni "certification"
-au "ujuzi unaoshindikana kusema bila cheti"?
+README ya PORTFOLIO + CV. **Retro:** je, mtaala uliohitaji ni
+"certification" au "ujuzi unaoshindikana kusema bila cheti"?
 
 ## ⬜ Sprint 3 — Agile/Scrum (4.2)
 **Kama** kiongozi wa timu, **nataka** kutumia lugha ya Agile, **ili**

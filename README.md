@@ -74,7 +74,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 4. ✅ **P12 Biashara (E-commerce)** → IMEKAMILIKA (tests 24)
 5. ✅ **P13 Mjibu (AI/RAG)** → IMEKAMILIKA (tests 18) — mradi wa AI
    kwa PPRA (FastAPI + Ollama + retrieval)
-6. ⬜ **Ngazi ya 4: Vyeti** → vyeti bure (ISC², Kaggle, fCC) →
+6. ⬜ **Ngazi ya 4: Vyeti** → vyeti bure (NetAcad, Kaggle, fCC) →
    CompTIA/CCNA (vipaji → baadaye)
 7. ⬜ **File 2: Maombi ya PPRA** (miradi ya sampuli ya barua + CV)
 8. ✅ Git + GitHub → **IMEKAMILIKA**: repo
