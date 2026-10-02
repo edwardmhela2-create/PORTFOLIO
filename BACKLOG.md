@@ -14,7 +14,10 @@ GitHub, **ili** nithibitishe ujuzi wangu bila kusema tu.
 - [x] Ramani imesasishwa (item 7 ✅)
 **Retro:** kwa nini db.sqlite3 haipaswi kuingia Git?
 
-## ⬜ Sprint 2 — Vyeti bure mtandaoni — MPANGO UMEBADILISHWA (Okt 2026)
+## ⏸️ Sprint 2 — Vyeti bure mtandaoni — IMESITISHWA KWA SASA (2 Okt 2026)
+> **Uamuzi wa Edward:** *"tuiruke kwanza, tutairudia."* Mwongozo
+> uko tayari kwenye `SPRINT2-VYETI.md` (ratiba 60'/siku × wiki 4) —
+> ukirudi ni kufuata hatua 1: netacad.com.
 **Kama** mwombaji wa PPRA, **nataka** vyeti vya bure vinavyothibitisha
 ujuzi, **ili** CV iwe na alama za kimataifa bila gharama.
 > **Ukweli (utafiti wa Okt 2026):** ISC² **1MCC imefungwa** kwa
@@ -32,15 +35,33 @@ ujuzi, **ili** CV iwe na alama za kimataifa bila gharama.
 README ya PORTFOLIO + CV. **Retro:** je, mtaala uliohitaji ni
 "certification" au "ujuzi unaoshindikana kusema bila cheti"?
 
-## ⬜ Sprint 3 — Agile/Scrum (4.2)
+## ✅ Sprint 3 — Agile/Scrum (4.2) (IMEKAMILIKA)
 **Kama** kiongozi wa timu, **nataka** kutumia lugha ya Agile, **ili**
 nyinyi muweze kufanya kazi pamoja bila mgongano.
 - [x] Maelezo: sprint, story, DoD, retro (yamewekwa kwenye mazungumzo)
 - [x] Backlog hii imeanzishwa
-- [ ] Andika sprint 1 ya P12 ilivyofanya kazi (sprint review ya
-      miashara: alama 24/24, smoke 200/302)
+- [x] Andika sprint review ya P12 (hapa chini)
 **Acceptance criteria:** unaweza kueleza "sprint" na "story of Done"
-kwa sentensi moja kila moja kwenye interview.
+kwa sentensi moja kila moja kwenye interview — **Imefikiwa**:
+- *Sprint* = kipindi kigupya chenye lengo moja kinachozalisha
+  kipengele kinachotumika + kimejaribiwa + kimepushwa.
+- *Story of Done* = kiolesura: requirements zimekamilika, mitihani
+  inapita, README ipo, ethics zimeelezwa, na `git push` imefanyika.
+
+### Sprint review — mradi wa "sprint 1" (P12: Duka la Kwanza)
+- **Sprint goal:** e-commerce kamili: bidhaa → kikapu → malipo → oda.
+- **Yaliyotolewa:** models (Lebo **M2M**, **Oda + snapshot**
+  `OdaBidhaa`, kipengele cha unique), kikapu kwenye kila ukurasa
+  (**context processor**), checkout yenye `transaction.atomic` + stoo,
+  RBAC (muuzaji/mnunuzi/madmini), templates 10, `anza` command,
+  README yenye ethics + production upgrades.
+- **Miashara:** mitihani **24/24** ✓ · smoke `/` → 200, `/kikapu/`
+  anon → 302 ✓ · `manage.py makosa` → 0 ✓ · **push imefanyika** ✓.
+- **Definition of Done:** zote 5 zimepimwa hapo juu → **DONE**.
+- **Retro (gofchi tulizokwama):** `Decimal._state.adding`
+  (kiashiria cha ORM); jina la linajukumu likagongana na field
+  (`kagua` → `meneja`); PowerShell `Out-File` = UTF-16 → SyntaxError;
+  unique constraint ni **sheria ya biashara**, si SQL tu.
 
 ## ✅ Sprint 4 — P13: Document Q&A (AI/RAG) — mradi wa PPRA (IMEKAMILIKA)
 **Kama** mwombaji wa nafasi ya AI Applications, **nataka** mradi wa
@@ -79,7 +100,8 @@ zipo PDF, zimepakiwa kwenye repo (bila taarifa za faragha) —
 tangazo linasema wazi: *"draft your application letter referencing
 specific pieces of the project"*).
 
-## ⬜ Sprint 2b — Data / AI / ML certificates (SEHEMU ILIYOONGEZWA)
+## ⏸️ Sprint 2b — Data / AI / ML certificates (SEHEMU ILIYOONGEZWA)
+> **Pia imesitishwa** (2 Okt 2026) — inasubiri pamoja na Sprint 2.
 **Kwa nini haikuwepo?** Mtaala 4.1 haikuorodhesha vyeti vya data/AI
 (CompTIA/CCNA pekee) ingawa 3.3 ilifundisha AI — lakini soko (PPRA
 *nafasi ya AI Applications*) + P9 zinahitaji. Kama mwombaji wa AI
