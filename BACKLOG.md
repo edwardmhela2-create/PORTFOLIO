@@ -74,8 +74,13 @@ Ollama + Python + vector search ulioanza P9.
 - [x] UI rahisi + README yenye architecture decisions + ethics
       (prompt injection, hallucination, faragha)
 - [x] Tests 18 + push kwenye GitHub
+- [x] **Uimarishaji (2 Okt 2026):** **Chroma vector DB** + embeddings
+      (hashing/Ollama) + **LLM mbadala** (`MJIBU_BACKEND=openai` =
+      wingu; `.env` loader) — inaolingana na *Portfolio Project Idea*
+      ya PSRS; tests → **30**
 **Acceptance criteria:** swali kwa PDF → jibu lenye citation
-(`[1] portfolio.md`) ✓; tests 18/18 ✓; repo ipo ✓.
+(`[1] portfolio.md`) ✓; tests 30/30 ✓; repo ipo ✓; vector DB +
+interchangeable backends ✓ (PSRS idea).
 **Retro:** Ollama alifanya kazi bila intaneti — data haikuenda
 wingu; mara ya kwanza = 81s (model load) → streaming ndio jibu la
 production.

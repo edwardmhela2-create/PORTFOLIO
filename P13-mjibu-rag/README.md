@@ -2,10 +2,14 @@
 
 Mradi wa **AI wa PPRA**: uliza swali lolote kuhusu PDF/TXT/MD uliyopakia,
 jibu linakuja na **vyanzo** — ukiendeshwa **ndani ya kompyuta yako**
-(Ollama), bila kutuma data kwenye wingu.
+(Ollama), bila kutuma data kwenye wingu. **Imeimarishwa** (Okt 2026):
+**Chroma vector DB** + **embeddings** + **backend mbadala**
+(Ollama ⇄ API ya wingu) — sawa na *Portfolio Project Idea* ya tangazo
+la PSRS.
 
-**Stack:** FastAPI + scikit-learn (TF-IDF cosine retrieval) +
-Ollama `llama3.2:1b` + UI ya mazungumzo.
+**Stack:** FastAPI + **Chroma** (vector DB, cosine) + embeddings
+(hashing/Ollama) + LLM **mbadala** (Ollama `llama3.2:1b` au OpenAI-style
+kwa `.env`) + UI ya mazungumzo.
 
 ## Thamani ya biashara
 Kampuni/taasisi (k.m. PPRA) zina nyaraka nyingi (taratibu, kanuni,
@@ -18,7 +22,7 @@ na kwa kuwa Ollama ni **local**, taarifa za siri **haziendi nje**.
 | **RAG** (Retrieve + Generate) | Mwalimu anapewa **kitabu** kabla ya kujibu — jibu lake linatoka kwenye kitabu, si kumbukumbu tu |
 | **Chunking** (vipande) | Kitabu kisomekwe kwa kurasa, si mara moja — LLM hawezi kukariri kitu kirefu |
 | **TF-IDF + cosine** | Ulinganifu wa maneno "muhimu" (nadra = thamani zaidi) — jina "firewall" linazidi "la" |
-| **Embeddings** (uwezo wa baadaye) | Badala ya maneno — maana (meaning); "mlango wa usalama" ≈ "firewall" bila neno moja |
+| **Embeddings** (sasa: hashing 512; Ollama-neural: `.env`) | Badala ya maneno la jadi — maana. `MJIBU_EMBED=ollama` ukawa na Ollama ya kisasa (`/api/embed`), Auto → hashing (offline) bila kushindwa |
 | **Citations [1], [2]** | Ripoti ya mwanasayansi: kila dai lina chanzo — jibu lisilo na chanzo = habari ya kupewa |
 | **Hallucination** | LLM anaweza "kubuni" — kanuni ya "Sijui" + temperature 0.1 hupunguza |
 | **Prompt injection** | Mtu anaweza kupakia nyaraka: "ignore instructions..." — README inaeleza kinga |
@@ -32,25 +36,34 @@ python -m uvicorn mjibu.app:app --port 8002 # au mjibu.bat
 # fungua http://127.0.0.1:8002
 ```
 Nyaraka 2 za mfano (`portfolio.md`, `usalama.md`) zinapakia
-**automatiki** start. Badilisha `.env.example` → `.env` kwa mipangilio
-(`MJIBU_MODEL`, `MJIBU_K`, n.k.).
+**automatiki** start. Badilisha `.env.example` → `.env` kwa mipangilio:
+
+| Kipengele | Jukumu |
+|---|---|
+| `MJIBU_DB=auto\|chroma\|tfidf` | Hifadhi: **Chroma** (kudumu, cosine) au TF-IDF ya ndani |
+| `MJIBU_EMBED=auto\|ollama\|hashing` | Vipimo: Ollama neural (ukawa na mfumo wa kisasa) → hashing 512-d offline |
+| `MJIBU_BACKEND=ollama\|openai` | **LLM mbadala**: ndani (bure/siri) au wingu (weka `MJIBU_OPENAI_API_KEY` `.env` tu) |
 
 ## Mwendo wa jaribio
 1. Kwenye UI: uliza *"Mielelezo ilifikia asilimia ngapi?"* → jibu lenye
    **[1] portfolio.md**.
 2. Pakia PDF halisi (taarifa/tarati) → uliza swali lake → angalia
-   vyanzo.
-3. Funga Ollama → uliza tena → ujumbe wa kirafiki "LLM haipatikani"
-   (API haivunji).
+   vyanzo (kwenye `GET /api/nyaraka` unaona vipande vyake).
+3. Funga Ollama → uliza tena → ujumbe wa kirafiki (API haivunji);
+   badilisha `MJIBU_BACKEND=openai` + ufunguo → jibu linatoka wingu
+   (badala ya ndani).
 4. Ondoa nyaraka zote → uliza → **"Sijui"** (haijibu kwa kubuni).
 
 ## Mitihani
 ```powershell
-python -m pytest -q    # 18 tests (LLM imemock-iwa - inaenda offline)
+python -m pytest -q    # 30 tests (LLM + Ollama embed imemock-iwa)
 ```
-- Chunking (ukubwa/overlap/tupu), hifadhi ya vekta (tafuta/ondoa),
-  API (pakia/nyaraka/futa/swali + validation 400/404/422),
-  prompt (kanuni + vyanzo), LLM client (haipo → `None`), auto-load.
+- Chunking (ukubwa/overlap/tupu), **hashing embeddings** (thabiti,
+  fallback), **Chroma store** (tafuta/ondoa/hudhurupio/persistence),
+  kiunganisho (`auto|chroma|tfidf`), API (pakia/nyaraka/futa/swali +
+  validation 400/404/422), prompt (kanuni + vyanzo), LLM **mbadala**
+  (Ollama haipo → `None`; OpenAI payload/auth/parse; `maelezo()`),
+  `.env` loader.
 
 ## Maadili (Ethics)
 - **Faragha**: nyaraka huishi kwenye kompyuta yako — lakini PDF za
@@ -65,18 +78,24 @@ python -m pytest -q    # 18 tests (LLM imemock-iwa - inaenda offline)
 - `.env` haingii Git; hakuna API key kwenye repo hii.
 
 ## Viwango vya production (Production upgrades)
-- **Embeddings halisi** + vector DB (**Chroma/Qdrant**) —
-  semantic search (sasa: TF-IDF, inafanya kazi bila mtandao).
-- **Streaming** (SSE) — jibu lionekane herufi kwa herufi (81s si
-  nzuri kwa mtumiaji!).
+- ✅ **Imekamilika (Okt 2026):** **Chroma vector DB** (persistent,
+  cosine) · **embeddings** (`MJIBU_EMBED`; auto → hashing 512-d) ·
+  **LLM mbadala** (`MJIBU_BACKEND=openai` + `.env` key = jibu la
+  wingu bila kubadilisha code) · `.env` loader bila package za ziada.
+- **Embeddings halisi** (Ollama `nomic-embed-text` au
+  sentence-transformers) — semantic search kamili; sasa hashing ni
+  ya maneno tu (faida: offline, haraka; hasara: "mlango wa usalama"
+  bado hailingani na "firewall").
+- **Streaming** (SSE) — jibu lionekane herufi kwa herufi (saa ¼ si
+  nzuri kwa mtumiaji).
 - **LangChain/LlamaIndex** kwa orchestration + multi-hop retrieval.
 - Auth + rate limiting + virus scan ya faili zinazopakiwa.
 - Docker (`uvicorn` image) + PostgreSQL kwa metadata ya nyaraka.
-- Backend ya pili: API ya Anthropic/OpenAI (mfano: `.env` mbadala).
 
 ## Ramani (Roadmap)
 - ✅ P10–P12 (Django trilogy)
-- ✅ **P13 Mjibu (AI/RAG)** — unakoona hapa (tests 18)
+- ✅ **P13 Mjibu (AI/RAG)** — unakoona hapa (tests 30; Chroma +
+  embeddings + backend mbadala)
 - ⬜ Sprint 2/2b: vyeti bure (ISC², Kaggle, fCC)
 - ⬜ File 2: maombi ya PPRA (CV yenye kiungo cha GitHub hiki)
 

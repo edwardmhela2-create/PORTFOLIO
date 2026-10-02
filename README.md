@@ -19,7 +19,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 | P10 | **Benki 360 (Django)** | Django 6, ORM, majukumu, CSRF, admin Kiswahili (tests 19) | `python manage.py runserver` |
 | P11 | **Ofisi 360 (Django)** | workflow (state machine), signals/audit, faili+CSV, CBV, pagination (tests 20) | `python manage.py runserver` |
 | P12 | **Duka la Kwanza (Biashara)** | e-commerce: M2M, kikapu+context processor, checkout atomic, snapshot, Update/DeleteView (tests 24) | `python manage.py runserver` |
-| P13 | **Mjibu (AI/RAG)** | FastAPI, chunking, TF-IDF retrieval, Ollama, citations, UI ya mazungumzo (tests 18) | `python -m uvicorn mjibu.app:app --port 8002` |
+| P13 | **Mjibu (AI/RAG)** | FastAPI, chunking, **Chroma vector DB** + embeddings, **LLM mbadala** (Ollama/wingu), citations, UI ya mazungumzo (tests 30) | `python -m uvicorn mjibu.app:app --port 8002` |
 
 ## Sentensi moja kwa kila mradi (kwa CV/interview)
 1. **SysReport** - nilijenga ripoti inayojitengeneza ya hali ya kompyuta
@@ -55,12 +55,13 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
     **transaction.atomic**, **snapshot ya bei/jina** (SET_NULL),
     Update/DeleteView - **mitihani 24**.
 13. **Mjibu (AI/RAG)** - uliza swali kwenye PDF/MD: **FastAPI**,
-    chunking, **TF-IDF cosine retrieval**, **Ollama local**
-    (llama3.2:1b), **citations [1]**, "Sijui" dhidi ya
-    hallucination, UI ya mazungumzo - **mitihani 18**.
+    chunking, **Chroma vector DB** (cosine) + **embeddings**,
+    **LLM mbadala** (Ollama ndani ⇄ API ya wingu kwa `.env`),
+    **citations [1]**, "Sijui" dhidi ya hallucination, UI ya
+    mazungumzo - **mitihani 30**.
 
 ## Jumla kwa CV (verification)
-- **Miradi 13/13** (P1-P13) ✅ | **mitihani 146** (18+14+15+6+12+19+20+24+18) inapita
+- **Miradi 13/13** (P1-P13) ✅ | **mitihani 158** (18+14+15+6+12+19+20+24+30) inapita
 - Teknolojia: PowerShell, Python, Flask, **Django**, SQLite,
   HTML/CSS/JS, scikit-learn, Docker, Git(→ kujifunza), Tkinter
 - **Ethics**: hashing si reverse-able, port scan ni ya mifumo yako tu,
@@ -72,8 +73,8 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 2. ✅ **P10 Benki 360 (Django)** → IMEKAMILIKA (tests 19)
 3. ✅ **P11 Mfumo wa Ofisi (Django #2)** → IMEKAMILIKA (tests 20)
 4. ✅ **P12 Biashara (E-commerce)** → IMEKAMILIKA (tests 24)
-5. ✅ **P13 Mjibu (AI/RAG)** → IMEKAMILIKA (tests 18) — mradi wa AI
-   kwa PPRA (FastAPI + Ollama + retrieval)
+5. ✅ **P13 Mjibu (AI/RAG)** → IMEKAMILIKA (tests 30) — mradi wa AI
+   kwa PPRA (FastAPI + Chroma + Ollama/wingu)
 6. ⬜ **Ngazi ya 4: Vyeti** → vyeti bure (NetAcad, Kaggle, fCC) →
    CompTIA/CCNA (vipaji → baadaye)
 7. ⬜ **File 2: Maombi ya PPRA** (miradi ya sampuli ya barua + CV)

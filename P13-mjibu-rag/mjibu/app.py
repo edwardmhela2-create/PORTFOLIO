@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -11,11 +12,28 @@ from pydantic import BaseModel, Field
 from . import llm
 from .ingest import MAHITAJI, tengeneza_nyaraka
 from .prompts import jenga_muktadha
-from .retrieve import Hifadhi
+from .retrieve import hifadhi_mpya
 
 MIZIZI = Path(__file__).resolve().parent.parent
 DATA = MIZIZI / "data" / "nyaraka"
-hifadhi = Hifadhi()
+
+
+def _paza_env(njia):
+    """Soma .env (syntax rahisi, hakuna package ya ziada).
+
+    Siri: ufunguo wa API iwe kwenye .env pekee - .env haingii Git.
+    """
+    if not njia.exists():
+        return
+    for mstari in njia.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$", mstari)
+        if m and not mstari.strip().startswith("#"):
+            os.environ.setdefault(m.group(1),
+                                  m.group(2).strip().strip("'\""))
+
+
+_paza_env(MIZIZI / ".env")
+hifadhi = hifadhi_mpya(MIZIZI / "data" / "chroma")
 
 
 def pakia_yote():
@@ -96,8 +114,7 @@ def uliza(s: Swali):
     majibu = llm.jibu(s.swali, muktadha)
     if majibu is None:
         return {"hali": "llm_hai",
-                "jibu": "LLM haipatikani. Hakikisha Ollama inaendeshwa "
-                        "(ollama serve) jaribu tena.",
+                "jibu": llm.maelezo(),
                 "vyanzo": vyanzo}
     return {"hali": "ok", "jibu": majibu, "vyanzo": vyanzo,
             "muda_ms": int((time.time() - muda) * 1000)}

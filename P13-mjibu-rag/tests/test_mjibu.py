@@ -4,20 +4,23 @@ import pytest
 from fastapi.testclient import TestClient
 
 from mjibu import app as app_mod
-from mjibu import llm
+from mjibu import embed, llm
 from mjibu.ingest import gawanya, tengeneza_nyaraka
 from mjibu.prompts import MSAIDIZI, jenga_muktadha
-from mjibu.retrieve import Hifadhi
+from mjibu.retrieve import Hifadhi, HifadhiChroma, hifadhi_mpya
 
 
 @pytest.fixture
 def huduma(monkeypatch, tmp_path):
     monkeypatch.setenv("MJIBU_LOAD", "0")
+    monkeypatch.setenv("MJIBU_EMBED", "hashing")
+    monkeypatch.setenv("MJIBU_BACKEND", "ollama")
+    monkeypatch.setenv("MJIBU_DB", "tfidf")
     monkeypatch.setattr(app_mod, "DATA", tmp_path / "nyaraka")
-    app_mod.hifadhi.ondoa_yote()
+    monkeypatch.setattr(app_mod, "hifadhi",
+                        hifadhi_mpya(tmp_path / "hifadhi"))
     with TestClient(app_mod.app) as m:
         yield m
-    app_mod.hifadhi.ondoa_yote()
 
 
 def _pakia(huduma, jina, maandishi):
@@ -172,3 +175,141 @@ class TestPromptNaLLM:
         app_mod.pakia_yote()
         assert [n["jina"] for n in
                 app_mod.hifadhi.nyaraka] == ["asili.md"]
+
+
+class TestVipimoVipya:
+
+    def test_embed_hashing_thabiti_na_ukubwa(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        a = embed.vipimo(["habari yako"])
+        b = embed.vipimo(["habari yako"])
+        c = embed.vipimo(["tofauti kabisa"])
+        assert a == b
+        assert a[0] != c[0]
+        assert len(a[0]) == 512
+
+    def test_embed_ollama_hushindwa_kuanguka_hashing(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "auto")
+        monkeypatch.setattr(embed, "_ollama", lambda m: None)
+        monkeypatch.setattr(embed, "_hali", {"ollama_imeshindwa": False})
+        v = embed.vipimo(["neno"])
+        assert v and len(v[0]) == 512
+
+    def test_embed_ollama_wajibu_na_kushindwa(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "ollama")
+        monkeypatch.setattr(embed, "_ollama", lambda m: None)
+        monkeypatch.setattr(embed, "_hali", {"ollama_imeshindwa": False})
+        assert embed.vipimo(["neno"]) is None
+
+    def test_chroma_tafuta_na_ondoa(self, tmp_path, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        h = HifadhiChroma(tmp_path / "ch")
+        h.ongeza({"jina": "firewall.md",
+                  "vipande": ["Firewall huzuia milango isiyo ya "
+                              "kuruhusiwa kufunguliwa"],
+                  "herufi": 60})
+        h.ongeza({"jina": "dushi.md",
+                  "vipande": ["Dushi la maji linaweza kuharibu kompyuta"],
+                  "herufi": 50})
+        m = h.tafuta("firewall huzuia milango")
+        assert m and m[0]["jina"] == "firewall.md"
+        assert m[0]["alama"] > 0
+        h.ondoa("firewall.md")
+        m2 = h.tafuta("firewall huzuia milango")
+        assert all(x["jina"] != "firewall.md" for x in m2)
+
+    def test_chroma_hudhurupio_kwa_kufungua_upya(self, tmp_path, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        njia = tmp_path / "ch2"
+        h = HifadhiChroma(njia)
+        h.ongeza({"jina": "a.md", "vipande": ["mipango ya kazi na shughuli"],
+                  "herufi": 26})
+        h2 = HifadhiChroma(njia)
+        assert [n["jina"] for n in h2.nyaraka] == ["a.md"]
+        m = h2.tafuta("mipango ya kazi")
+        assert m and m[0]["jina"] == "a.md"
+        h2.ondoa_yote()
+        assert HifadhiChroma(njia).tafuta("mipango ya kazi") == []
+
+    def test_kiunganisho_mbadala_mizunguko(self, tmp_path, monkeypatch):
+        monkeypatch.setenv("MJIBU_DB", "tfidf")
+        assert isinstance(hifadhi_mpya(tmp_path / "x"), Hifadhi)
+        monkeypatch.setenv("MJIBU_DB", "chroma")
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        assert isinstance(hifadhi_mpya(tmp_path / "y"), HifadhiChroma)
+
+    def test_swali_kupitia_chroma_api(self, monkeypatch, tmp_path):
+        monkeypatch.setenv("MJIBU_LOAD", "0")
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        monkeypatch.setattr(app_mod, "DATA", tmp_path / "nyaraka")
+        monkeypatch.setattr(app_mod, "hifadhi",
+                            HifadhiChroma(tmp_path / "ch"))
+        monkeypatch.setattr(app_mod.llm, "jibu",
+                            lambda *a, **k: "Jibu: 94.7% [1]")
+        with TestClient(app_mod.app) as huduma:
+            _pakia(huduma, "ml.md",
+                   "Mielelezo ilifikia asilimia 94.7 ya usahihi.")
+            r = huduma.post(
+                "/api/swali",
+                json={"swali": "Mielelezo ilifikia asilimia ngapi?"})
+        data = r.json()
+        assert data["hali"] == "ok"
+        assert data["vyanzo"][0]["jina"] == "ml.md"
+
+    def test_ombizo_haijapiga_mtandao_hashing(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_EMBED", "hashing")
+        monkeypatch.setattr(embed.httpx, "post",
+                            lambda *a, **k: pytest.fail("hapaswi kupiga"))
+        assert embed.vipimo(["neno lolote"])
+
+
+class TestLLMMbadala:
+
+    def test_wingu_openai_payload_na_jibu(self, monkeypatch):
+        yaliyotumwa = {}
+
+        class M:
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"choices": [{"message": {
+                    "content": "Jibu la wingu [1]"}}]}
+
+        def piga(url, **kw):
+            yaliyotumwa["url"] = url
+            yaliyotumwa.update(kw)
+            return M()
+
+        monkeypatch.setenv("MJIBU_BACKEND", "openai")
+        monkeypatch.setenv("MJIBU_OPENAI_API_KEY", "siri-123")
+        monkeypatch.setattr(llm.httpx, "post", piga)
+        assert llm.jibu("swali", "muktadha") == "Jibu la wingu [1]"
+        assert yaliyotumwa["url"].endswith("/chat/completions")
+        assert yaliyotumwa["headers"]["Authorization"] == "Bearer siri-123"
+        assert yaliyotumwa["json"]["temperature"] == 0.1
+
+    def test_wingu_bila_ufunguo_harudi_none(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_BACKEND", "openai")
+        monkeypatch.delenv("MJIBU_OPENAI_API_KEY", raising=False)
+        monkeypatch.setattr(llm.httpx, "post",
+                            lambda *a, **k: pytest.fail("hapaswi kupiga"))
+        assert llm.jibu("s", "m") is None
+        assert "API ya wingu" in llm.maelezo()
+
+    def test_maelezo_hubadilika_kulingana_na_backend(self, monkeypatch):
+        monkeypatch.setenv("MJIBU_BACKEND", "ollama")
+        assert "Ollama" in llm.maelezo()
+        monkeypatch.setenv("MJIBU_BACKEND", "openai")
+        assert "wingu" in llm.maelezo()
+
+    def test_paza_env_soma_dotenv(self, tmp_path, monkeypatch):
+        import os
+        f = tmp_path / ".env"
+        f.write_text("MJIBU_MODEL=jaribio\n# maoni\nMJIBU_K=9\n",
+                     encoding="utf-8")
+        monkeypatch.delenv("MJIBU_MODEL", raising=False)
+        monkeypatch.delenv("MJIBU_K", raising=False)
+        app_mod._paza_env(f)
+        assert os.environ["MJIBU_MODEL"] == "jaribio"
+        assert os.environ["MJIBU_K"] == "9"

@@ -34,17 +34,22 @@
 - **P12 Duka la Kwanza (24)**: **M2M** (lebo), **context processor** (badge ya kikapu kila ukurasa), **unique constraint** kwa cart, checkout **`transaction.atomic` + `refresh_from_db` + `F()`**, **snapshot** (bei/jina huhifadhiwa; bidhaa ikifutwa → `SET_NULL` bila kupoteza oda), **UpdateView/DeleteView**, 404-vs-403 (mali ya mwingine = 404, usionyeshe ipo).
   - *Gocha*: field/method bug ya P11 ilitokana na kupuuza — somo: soma Django errors mapema.
 
-## 5b. P13 Mjibu (AI/RAG) — tests 18
-- **RAG** = Retrieve + Generate: TF-IDF cosine (sklearn) →
-  muktadha → **Ollama (llama3.2:1b, local)** → jibu + citations [1].
+## 5b. P13 Mjibu (AI/RAG) — tests 30
+- **RAG** = Retrieve + Generate: **Chroma** (cosine, persistent) au
+  TF-IDF → muktadha → **LLM mbadala** (Ollama ndani ⇄ API ya wingu
+  kwa `.env`) → jibu + citations [1].
 - FastAPI (UploadFile, pydantic validation 400/422/404), chunking
   (ukubwa 600/hatua 500 = overlap), system prompt imara
   ("Sijui" + jibu kwa lugha ya swali + tu muktadha).
-- LLM client hurejesha `None` mtandao ukiwa chini → ujumbe wa
-  kirafiki (tests hazimhitaji Ollama — mock).
+- Embeddings: `auto` = jaribu Ollama (`/api/embeddings`) →
+  **hashing 512-d offline** (Ollama 0.35 haina /api/embed → 501).
+- LLM client hurejesha `None` mtandao ukiwa chini → ujumbe
+  unabadilika kulingana na backend (`maelezo()`).
 - *Gochi*: `for` iliyopotewa; uvicorn = `--log-level` si
   `--loglevel`; FastAPI inahitaji `python-multipart`; `ondoa()`
-  ilikuwa inaweka dict badala ya index (shadowing).
+  ilikuwa inaweka dict badala ya index (shadowing); chroma
+  `count()` ni **method** si attribute; HashingVectorizer iko
+  `sklearn.feature_extraction.text`.
 
 ## 6. Git + GitHub + Agile (Ngazi ya 4 yaliyoanza)
 - `git init -b main` → `.gitignore` (**DB/media/`__pycache__` HAZIINGII**; `sms.csv` = source data NAINGIA) → `add` → `commit` → `remote add` → `push -u origin main` → **credential (GCM) huhifadhiwa** (push za baadaye = `git push` tu).
