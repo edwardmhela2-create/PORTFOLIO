@@ -19,6 +19,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 | P10 | **Benki 360 (Django)** | Django 6, ORM, majukumu, CSRF, admin Kiswahili (tests 19) | `python manage.py runserver` |
 | P11 | **Ofisi 360 (Django)** | workflow (state machine), signals/audit, faili+CSV, CBV, pagination (tests 20) | `python manage.py runserver` |
 | P12 | **Duka la Kwanza (Biashara)** | e-commerce: M2M, kikapu+context processor, checkout atomic, snapshot, Update/DeleteView (tests 24) | `python manage.py runserver` |
+| P13 | **Mjibu (AI/RAG)** | FastAPI, chunking, TF-IDF retrieval, Ollama, citations, UI ya mazungumzo (tests 18) | `python -m uvicorn mjibu.app:app --port 8002` |
 
 ## Sentensi moja kwa kila mradi (kwa CV/interview)
 1. **SysReport** - nilijenga ripoti inayojitengeneza ya hali ya kompyuta
@@ -41,7 +42,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
    (45KB) kwa `.dockerignore` - **mitihani 6**.
 9. **Mielelezo (ML)** - spam predictor wa **offline** (Kiswahili/
    Kiingereza): TF-IDF + Naive Bayes, train/test split, **94.7%**
-   usahihi, model iliyohifadhiwa - **mitihani 9**.
+   usahihi, model iliyohifadhiwa - **mitihani 12**.
 10. **Benki 360 (Django)** - mradi mkubwa wa Django 6: ORM +
     migrations, majukumu 3 (Group), CSRF kiotomatiki, CASCADE,
     **admin ya Kiswahili**, ripoti - **mitihani 19**.
@@ -53,9 +54,13 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
     kikapu (unique constraint + **context processor**), checkout
     **transaction.atomic**, **snapshot ya bei/jina** (SET_NULL),
     Update/DeleteView - **mitihani 24**.
+13. **Mjibu (AI/RAG)** - uliza swali kwenye PDF/MD: **FastAPI**,
+    chunking, **TF-IDF cosine retrieval**, **Ollama local**
+    (llama3.2:1b), **citations [1]**, "Sijui" dhidi ya
+    hallucination, UI ya mazungumzo - **mitihani 18**.
 
 ## Jumla kwa CV (verification)
-- **Miradi 12/12** (P1-P12) ✅ | **mitihani 125** (18+14+15+6+9+19+20+24) inapita
+- **Miradi 13/13** (P1-P13) ✅ | **mitihani 146** (18+14+15+6+12+19+20+24+18) inapita
 - Teknolojia: PowerShell, Python, Flask, **Django**, SQLite,
   HTML/CSS/JS, scikit-learn, Docker, Git(→ kujifunza), Tkinter
 - **Ethics**: hashing si reverse-able, port scan ni ya mifumo yako tu,
@@ -66,11 +71,13 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 1. ✅ Ngazi 1-3 + Miradi P1-P9 → IMEKAMILIKA
 2. ✅ **P10 Benki 360 (Django)** → IMEKAMILIKA (tests 19)
 3. ✅ **P11 Mfumo wa Ofisi (Django #2)** → IMEKAMILIKA (tests 20)
-4. ✅ **P12 Biashara (E-commerce)** → IMEKAMILIKA (tests 24) - mradi wa mwisho mkubwa
-5. ⬜ **Ngazi ya 4: Vyeti** → fundamentals (Cisco/MTA/Google) → CHL
-   (baada ya P10-P12 kama ulivyosema)
-6. ⬜ **File 2: Maombi ya PPRA** (miradi ya sampuli ya barua + CV)
-7. ✅ Git + GitHub → **IMEKAMILIKA**: repo
+4. ✅ **P12 Biashara (E-commerce)** → IMEKAMILIKA (tests 24)
+5. ✅ **P13 Mjibu (AI/RAG)** → IMEKAMILIKA (tests 18) — mradi wa AI
+   kwa PPRA (FastAPI + Ollama + retrieval)
+6. ⬜ **Ngazi ya 4: Vyeti** → vyeti bure (ISC², Kaggle, fCC) →
+   CompTIA/CCNA (vipaji → baadaye)
+7. ⬜ **File 2: Maombi ya PPRA** (miradi ya sampuli ya barua + CV)
+8. ✅ Git + GitHub → **IMEKAMILIKA**: repo
    [github.com/edwardmhela2-create/PORTFOLIO](https://github.com/edwardmhela2-create/PORTFOLIO)
    (faili 202, bila API keys/secrets; SECRET_KEY ya Django iwe
    kwenye `.env`, si kwenye Git)

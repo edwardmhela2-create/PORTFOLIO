@@ -1,0 +1,46 @@
+.mkondo {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.kushoto { background: #fff; border-radius: 12px; padding: 16px 18px;
+  border-top: 4px solid var(--bluu); }
+.kushoto h2 { font-size: 1rem; margin: 0 0 10px; }
+.kushoto h2 + h2 { margin-top: 18px; }
+.kushoto input[type=file] { width: 100%; margin-bottom: 8px; }
+
+.orodha-nyaraka { list-style: none; padding: 0; margin: 0; }
+.orodha-nyaraka li { display: flex; justify-content: space-between;
+  align-items: center; padding: 7px 0;
+  border-bottom: 1px solid #e6ecf3; font-size: .9rem; }
+.orodha-nyaraka .futa { background: none; border: none;
+  color: var(--nyekundu); cursor: pointer; font-weight: 600; }
+
+.mazungumzo { background: #fff; border-radius: 12px; padding: 14px;
+  min-height: 320px; max-height: 60vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 10px;
+  border-top: 4px solid var(--dhahabu); }
+
+.ujumbe { padding: 10px 13px; border-radius: 10px; max-width: 85%;
+  line-height: 1.45; white-space: pre-wrap; }
+.mtumiaji-msg { align-self: flex-end; background: var(--bluu);
+  color: #fff; }
+.uwezo { align-self: flex-start; background: var(--nyepesi);
+  border: 1px solid #e6ecf3; }
+
+.vyanzo-chips { margin-top: 8px; display: flex; gap: 6px;
+  flex-wrap: wrap; }
+.chip { background: var(--mweusi); color: #fff; font-size: .75rem;
+  padding: 2px 8px; border-radius: 20px; }
+
+.fomu-uliza { display: flex; gap: 8px; margin-top: 12px; }
+.fomu-uliza input { flex: 1; padding: 10px 12px;
+  border: 1px solid #ccd6e3; border-radius: 8px; font-size: 1rem; }
+
+.inasakinisha { opacity: .6; pointer-events: none; }
+
+@media (max-width: 760px) {
+  .mkondo { grid-template-columns: 1fr; }
+}

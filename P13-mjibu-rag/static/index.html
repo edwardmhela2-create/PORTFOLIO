@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mjibu - Maswali kwa Nyaraka</title>
+<link rel="stylesheet" href="/static/faili.css">
+<link rel="stylesheet" href="/static/mjibu.css">
+</head>
+<body>
+<header>
+  <a class="nembo" href="/">Mjibu</a>
+  <nav>
+    <span class="mtumiaji">RAG + Ollama (local)</span>
+  </nav>
+</header>
+<main class="mkondo">
+  <section class="kushoto">
+    <h2>1. Pakia nyaraka</h2>
+    <form id="fomu-pakia">
+      <input type="file" name="faili" id="faili" accept=".txt,.md,.pdf" required>
+      <button type="submit" class="btn">Pakia</button>
+    </form>
+    <p id="hali-pakia" class="kidokezo"></p>
+    <h2>2. Nyaraka zilizopo</h2>
+    <ul id="orodha" class="orodha-nyaraka"></ul>
+  </section>
+
+  <section class>kulia">
+    <h2>Uliza Mjibu</h2>
+    <div id="mazungumzo" class="mazungumzo">
+      <div class="uwezo ujumbe"><b>Mjibu:</b> Karibu! Pakia nyaraka
+      (.txt/.md/.pdf) kisha uliza swali lolote juu ya maudhui yake.
+      Majibu yana vyanzo [1], [2] kutoka kwenye nyaraka.</div>
+    </div>
+    <form id="fomu-swali" class="fomu-uliza">
+      <input type="text" id="swali" placeholder="mf. Mielelezo ilifikia asilimia ngapi?"
+             maxlength="500" autocomplete="off" required>
+      <button type="submit" class="btn" id="tuma">Tuma</button>
+    </form>
+  </section>
+</main>
+<footer>Mjibu &middot; P13 (AI/RAG) &middot; Retrieve + Generate</footer>
+<script src="/static/mjibu.js"></script>
+</body>
+</html>

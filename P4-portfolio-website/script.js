@@ -119,6 +119,16 @@ const miradi = [
     kiungo_maandishi: "Fungua folda ya mradi",
     maelezo_zaidi: "Endesha: cd P12-biashara-django; python manage.py runserver (admin/duka123, hassan/muuz123)",
   },
+  {
+    id: "P13",
+    jina: "Mjibu (AI/RAG)",
+    hali: "done",
+    maelezo: "Uliza swali kwenye PDF/MD: FastAPI + TF-IDF retrieval + Ollama (local) + citations + UI ya mazungumzo (tests 18).",
+    tekh: ["FastAPI", "RAG", "Ollama", "scikit-learn"],
+    kiungo: "../P13-mjibu-rag/",
+    kiungo_maandishi: "Fungua folda ya mradi",
+    maelezo_zaidi: "Endesha: cd P13-mjibu-rag; ollama serve; python -m uvicorn mjibu.app:app --port 8002",
+  },
 ];
 
 function onyeshaMiradi(kichujio) {

@@ -38,17 +38,22 @@ nyinyi muweze kufanya kazi pamoja bila mgongano.
 **Acceptance criteria:** unaweza kueleza "sprint" na "story of Done"
 kwa sentensi moja kila moja kwenye interview.
 
-## ⬜ Sprint 4 — P13: Document Q&A (AI/RAG) — mradi wa PPRA
+## ✅ Sprint 4 — P13: Document Q&A (AI/RAG) — mradi wa PPRA (IMEKAMILIKA)
 **Kama** mwombaji wa nafasi ya AI Applications, **nataka** mradi wa
 RAG (Retrieval-Augmented Generation), **ili** nithibitishe ujuzi wa
 Ollama + Python + vector search ulioanza P9.
-- [ ] FastAPI endpoint ya kuuliza maswali kwenye PDF
-- [ ] Embeddings + vector DB (Chroma) nje ya mtandao
-- [ ] Nyuma: Ollama (halisi) **au** API ya wingu (linganisha)
-- [ ] UI rahisi + README yenye architecture decisions
-- [ ] Tests + push kwenye GitHub
-**Acceptance criteria:** swali kwa PDF → jibu lenye citation; tests
-zinaenda; repo ipo. **Retro:** Ollama alifanya kazi vipi bila intaneti?
+- [x] FastAPI endpoint ya kuuliza maswali kwenye PDF/TXT/MD
+- [x] TF-IDF cosine retrieval (backend inayobadilika — embeddings
+      Chroma/Q..resha baadaye)
+- [x] Nyuma: Ollama (halisi, llama3.2:1b) + `.env` kwa mabadiliko
+- [x] UI rahisi + README yenye architecture decisions + ethics
+      (prompt injection, hallucination, faragha)
+- [x] Tests 18 + push kwenye GitHub
+**Acceptance criteria:** swali kwa PDF → jibu lenye citation
+(`[1] portfolio.md`) ✓; tests 18/18 ✓; repo ipo ✓.
+**Retro:** Ollama alifanya kazi bila intaneti — data haikuenda
+wingu; mara ya kwanza = 81s (model load) → streaming ndio jibu la
+production.
 
 ## ⬜ Sprint 5 — File 2: Maombi ya PPRA (CV + barua)
 **Kama** sekretari wa PSRS, **nataka** barua iliyosainiwa na CV sahihi,

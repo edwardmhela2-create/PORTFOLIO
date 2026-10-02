@@ -34,6 +34,18 @@
 - **P12 Duka la Kwanza (24)**: **M2M** (lebo), **context processor** (badge ya kikapu kila ukurasa), **unique constraint** kwa cart, checkout **`transaction.atomic` + `refresh_from_db` + `F()`**, **snapshot** (bei/jina huhifadhiwa; bidhaa ikifutwa → `SET_NULL` bila kupoteza oda), **UpdateView/DeleteView**, 404-vs-403 (mali ya mwingine = 404, usionyeshe ipo).
   - *Gocha*: field/method bug ya P11 ilitokana na kupuuza — somo: soma Django errors mapema.
 
+## 5b. P13 Mjibu (AI/RAG) — tests 18
+- **RAG** = Retrieve + Generate: TF-IDF cosine (sklearn) →
+  muktadha → **Ollama (llama3.2:1b, local)** → jibu + citations [1].
+- FastAPI (UploadFile, pydantic validation 400/422/404), chunking
+  (ukubwa 600/hatua 500 = overlap), system prompt imara
+  ("Sijui" + jibu kwa lugha ya swali + tu muktadha).
+- LLM client hurejesha `None` mtandao ukiwa chini → ujumbe wa
+  kirafiki (tests hazimhitaji Ollama — mock).
+- *Gochi*: `for` iliyopotewa; uvicorn = `--log-level` si
+  `--loglevel`; FastAPI inahitaji `python-multipart`; `ondoa()`
+  ilikuwa inaweka dict badala ya index (shadowing).
+
 ## 6. Git + GitHub + Agile (Ngazi ya 4 yaliyoanza)
 - `git init -b main` → `.gitignore` (**DB/media/`__pycache__` HAZIINGII**; `sms.csv` = source data NAINGIA) → `add` → `commit` → `remote add` → `push -u origin main` → **credential (GCM) huhifadhiwa** (push za baadaye = `git push` tu).
 - Repo: **github.com/edwardmhela2-create/PORTFOLIO** (Public, faili 202, 125 tests + backlog).
@@ -51,6 +63,6 @@
 | Kipimo | Idadi |
 |---|---|
 | P3+P5+P6+P7+P8+P9 | 18+14+15+6+9... (jumla ya zamani 62→62) |
-| P10 + P11 + P12 | 19 + 20 + 24 |
-| **JUMLA MITIHANI** | **125 tests** (18+14+15+6+12+19+20+24) |
-| Miradi | **12/12** + BACKLOG + site P4 |
+| P10 + P11 + P12 + P13 | 19 + 20 + 24 + 18 |
+| **JUMLA MITIHANI** | **146 tests** (18+14+15+6+12+19+20+24+18) |
+| Miradi | **13/13** + BACKLOG + site P4 |
