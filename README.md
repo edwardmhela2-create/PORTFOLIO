@@ -70,6 +70,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 5. ⬜ **Ngazi ya 4: Vyeti** → fundamentals (Cisco/MTA/Google) → CHL
    (baada ya P10-P12 kama ulivyosema)
 6. ⬜ **File 2: Maombi ya PPRA** (miradi ya sampuli ya barua + CV)
-7. 🟡 Git: `git init` + commit ya kwanza **IMEFANYIKA** (`a832907`,
-   faili 202) — GitHub push inasubiri akaunti + repo (bila API
-   keys/secrets; SECRET_KEY ya Django iwe kwenye `.env`, si Git)
+7. ✅ Git + GitHub → **IMEKAMILIKA**: repo
+   [github.com/edwardmhela2-create/PORTFOLIO](https://github.com/edwardmhela2-create/PORTFOLIO)
+   (faili 202, bila API keys/secrets; SECRET_KEY ya Django iwe
+   kwenye `.env`, si kwenye Git)
