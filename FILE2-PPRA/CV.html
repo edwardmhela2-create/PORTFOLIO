@@ -43,7 +43,7 @@
     <span class="ph">[BARUA@PEPE.COM]</span><br>
     GitHub:
     <a href="https://github.com/edwardmhela2-create/PORTFOLIO">github.com/edwardmhela2-create/PORTFOLIO</a>
-    (13 miradi, mitihani 146 inapita — README ya kila mradi)
+    (13 miradi, mitihani 158 inapita — README ya kila mradi)
   </div>
 </header>
 
@@ -51,10 +51,12 @@
 <p>
 Candidate for <b>ICT Officer II — Artificial Intelligence Applications</b>.
 Self-directed practitioner who prepared through a structured
-<b>13-project portfolio</b> with <b>146 automated tests</b>: Python,
+<b>13-project portfolio</b> with <b>158 automated tests</b>: Python,
 Django, FastAPI, machine learning and a complete <b>document Q&amp;A
-assistant (RAG)</b> that answers questions from PDFs with citations while
-running <b>fully offline on a local LLM (Ollama)</b>. Documents every
+assistant (RAG)</b> that answers questions from PDFs with citations,
+using a <b>local LLM (Ollama)</b> with an <b>interchangeable cloud
+LLM backend (OpenAI-compatible API via environment config)</b>.
+Documents every
 project in Swahili + English READMEs and works with Git/GitHub
 version control. <span class="ph">[ongeza sentensi 1-2 kuhusu elimu
 yako au lengo lako]</span>
@@ -65,24 +67,25 @@ yako au lengo lako]</span>
   <tr><th style="width:22%">Skill Area</th><th style="width:44%">Technology</th><th>Evidence in portfolio</th></tr>
   <tr><td><b>Language</b></td><td>Python (primary), JavaScript, HTML/CSS, SQL</td><td>All 13 projects; test suites in pytest</td></tr>
   <tr><td><b>Pipelines / APIs</b></td><td>RESTful APIs, JSON, Pydantic schemas, upload → process → respond</td><td>FastAPI service (P13): 6 endpoints, validation 400/404/422</td></tr>
-  <tr><td><b>LLM hosting</b></td><td><b>Ollama</b> (local, llama3.2:1b) — zero data leaves the machine</td><td>P13 answers generated on-device; graceful offline mode</td></tr>
+  <tr><td><b>LLM hosting</b></td><td><b>Ollama</b> (local, llama3.2:1b) ⇄ <b>cloud LLM API</b> (OpenAI-compatible) — switchable by config, no code change</td><td>P13 answers generated on-device; graceful offline mode; <code>MJIBU_BACKEND</code> env toggle</td></tr>
   <tr><td><b>Prompting</b></td><td>System prompts, structured JSON outputs, citation rules, anti-hallucination (“Sijui” policy)</td><td><code>mjibu/prompts.py</code> + tests</td></tr>
-  <tr><td><b>Agentic AI / RAG</b></td><td><b>Retrieval-Augmented Generation</b>, cosine similarity search, chunking w/ overlap</td><td>P13 core pipeline (retrieve → context → generate)</td></tr>
+  <tr><td><b>Agentic AI / RAG</b></td><td><b>Retrieval-Augmented Generation</b>, <b>Chroma vector database</b> (persistent, cosine), text embeddings (hashing + Ollama neural), chunking w/ overlap</td><td>P13 core pipeline (retrieve → context → generate)</td></tr>
   <tr><td><b>Version control</b></td><td>Git, GitHub (branch main, .gitignore, push workflow)</td><td>Public repo, commit history per sprint</td></tr>
   <tr><td><b>Data / ML</b></td><td>pandas, scikit-learn (TF-IDF, classification, precision/recall), model persistence</td><td>P9 classifier: 94.7% accuracy, 12 tests</td></tr>
   <tr><td><b>Web systems</b></td><td>Django (ORM, migrations, RBAC, audit trail, atomic transactions), vanilla JS</td><td>P10–P12: 3 full systems, 63 tests</td></tr>
-  <tr><td><b>In progress</b></td><td>Embeddings + vector DB (Chroma/Qdrant), LangChain, cloud LLM APIs (OpenAI/Anthropic) as interchangeable backends</td><td>Planned upgrades listed in P13 README</td></tr>
+  <tr><td><b>Delivered</b></td><td>Embeddings + <b>Chroma vector DB</b> (done), <b>cloud LLM backend</b> (done), HF sentence-transformers (next)</td><td>P13 upgrade, Oct 2026 — 30/30 tests green</td></tr>
+  <tr><td><b>Next</b></td><td>LangChain / LlamaIndex orchestration, streaming, neural embeddings</td><td>Listed in P13 README roadmap</td></tr>
 </table>
 
 <h2>Selected Projects</h2>
 
 <div class="proj">
-  <b>Mjibu — Document Q&amp;A assistant (RAG)</b> · Python, FastAPI, scikit-learn, Ollama, JS
+  <b>Mjibu — Document Q&amp;A assistant (RAG)</b> · Python, FastAPI, Chroma, Ollama/OpenAI, scikit-learn, JS
   <span class="muted">— matches the “Portfolio Project Idea” of this exact vacancy</span>
   <ul>
-    <li>Ingests <b>PDF / MD / TXT</b> → automatic <b>chunking</b> (600 chars, 100 overlap) → vectorised <b>TF-IDF cosine retrieval</b> → top-k context → <b>local LLM</b> → Swahili/English answer with <b>citations [1]</b>.</li>
-    <li>Chat UI, upload/delete endpoints, “Sijui” fallback (no answer outside context), structured JSON responses, friendly offline mode.</li>
-    <li><b>18 automated tests</b> (chunking, vector store, API validation, prompts, mocked LLM).</li>
+    <li>Ingests <b>PDF / MD / TXT</b> → automatic <b>chunking</b> (600 chars, 100 overlap) → <b>embeddings</b> stored in <b>Chroma vector DB</b> (persistent, cosine) → top-k context → <b>local LLM (Ollama)</b> or <b>cloud LLM API</b> → Swahili/English answer with <b>citations [1]</b>.</li>
+    <li>Chat UI, upload/delete endpoints, “Sijui” fallback (no answer outside context), structured JSON responses, friendly offline mode, backend switch by environment variable (<code>MJIBU_BACKEND=ollama|openai</code>).</li>
+    <li><b>30 automated tests</b> (chunking, embeddings, Chroma store, vector-store factory, API validation, prompts, both LLM backends mocked).</li>
   </ul>
 </div>
 
