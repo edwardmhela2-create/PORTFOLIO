@@ -20,7 +20,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
 | P11 | **Ofisi 360 (Django)** | workflow (state machine), signals/audit, faili+CSV, CBV, pagination (tests 20) | `python manage.py runserver` |
 | P12 | **Duka la Kwanza (Biashara)** | e-commerce: M2M, kikapu+context processor, checkout atomic, snapshot, Update/DeleteView (tests 24) | `python manage.py runserver` |
 | P13 | **Mjibu (AI/RAG)** | FastAPI, chunking, **Chroma vector DB** + embeddings, **LLM mbadala** (Ollama/wingu), citations, UI ya mazungumzo (tests 30) | `python -m uvicorn mjibu.app:app --port 8002` |
-| P14 | **Task Tracker (Angular)** | Soko la Post 1 (PPRA guide): Angular 21, TypeScript, signals, routing, vitest — UI Kiswahili (tests 4) | `ng serve --port 4200` |
+| P14 | **Task Tracker (Angular)** | Soko la Post 1 (PPRA guide): Angular 21, TypeScript, signals, routing, vitest — UI Kiswahili (tests 7) | `ng serve --port 4200` |
 
 ## Sentensi moja kwa kila mradi (kwa CV/interview)
 1. **SysReport** - nilijenga ripoti inayojitengeneza ya hali ya kompyuta
@@ -62,7 +62,7 @@ kilichoambuliwa kwenye CV/PPRA na kinarudiana na kipindi cha 1.1 → 3.3.
     mazungumzo - **mitihani 30**.
 
 ## Jumla kwa CV (verification)
-- **Miradi 14/14** (P1-P14) ✅ | **mitihani 162** (18+14+15+6+12+19+20+24+30+4) inapita
+- **Miradi 14/14** (P1-P14) ✅ | **mitihani 165** (18+14+15+6+12+19+20+24+30+7) inapita
 - Teknolojia: PowerShell, Python, Flask, **Django**, SQLite,
   HTML/CSS/JS, scikit-learn, Docker, Git(→ kujifunza), Tkinter
 - **Ethics**: hashing si reverse-able, port scan ni ya mifumo yako tu,

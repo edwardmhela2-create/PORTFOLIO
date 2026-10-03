@@ -144,7 +144,10 @@ rasmi.
       `NODE_OPTIONS=--dns-result-order=ipv4first` + retries) ·
       `ng new` P14 · component/signals/@for · serve 200 OK
       (headless Edge DOM) · vitest **4/4** · push
-- [ ] Skill #2 TypeScript (interfaces, OOP, reactive)
+- [x] Skill #2 TypeScript (interfaces, OOP, reactive) — theory +
+      practical: `KaziService` (class + private + `@Injectable` +
+      `inject()` DI), `interface Kazi`, `type Kichujio` (union),
+      filters + fomu — tsc strict safi, vitest **7/7**
 - [ ] Skill #3 Tailwind + HTML5 + Flexbox/Grid + Angular Material
 - [ ] Skill #4 Flutter & Dart (app ya simu)
 - [ ] Skill #5 NgRx (state management)

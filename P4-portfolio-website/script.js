@@ -133,7 +133,7 @@ const miradi = [
     id: "P14",
     jina: "Task Tracker (Angular)",
     hali: "done",
-    maelezo: "Soko la Post 1 (Frontend) kwa PPRA guide: Angular 21 + TypeScript + signals + routing + vitest — UI ya Kiswahili (tests 4).",
+    maelezo: "Soko la Post 1 (Frontend) kwa PPRA guide: Angular 21 + TypeScript (interface/class/DI) + signals + routing + vitest — UI ya Kiswahili (tests 7).",
     tekh: ["Angular", "TypeScript", "Signals", "Vitest"],
     kiungo: "../P14-task-tracker/",
     kiungo_maandishi: "Fungua folda ya mradi",

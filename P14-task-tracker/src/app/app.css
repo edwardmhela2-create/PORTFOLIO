@@ -40,3 +40,43 @@ h1 {
   color: #555;
   font-size: 0.9rem;
 }
+
+.ongeza {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.ongeza input {
+  flex: 1;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #d5ddd5;
+  border-radius: 8px;
+}
+
+.ongeza button,
+.vichujio button {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #14532d;
+  border-radius: 8px;
+  background: #fff;
+  color: #14532d;
+  cursor: pointer;
+}
+
+.vichujio {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.vichujio button.active {
+  background: #14532d;
+  color: #fff;
+}
+
+.orodha li.tupu {
+  border-style: dashed;
+  color: #777;
+  cursor: default;
+}

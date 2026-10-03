@@ -1,11 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-export interface Kazi {
-  id: number;
-  jina: string;
-  imekamilika: boolean;
-}
+import { KaziService, Kichujio } from './kazi.service';
 
 @Component({
   selector: 'app-root',
@@ -14,21 +9,35 @@ export interface Kazi {
   styleUrl: './app.css'
 })
 export class App {
+  protected readonly huduma = inject(KaziService);
+
   protected readonly title = signal('Fuatilia Kazi');
+  protected readonly kichujio = signal<Kichujio>('zote');
+  protected readonly jinaJipya = signal('');
 
-  protected readonly kazi = signal<Kazi[]>([
-    { id: 1, jina: 'Soma somo la Angular', imekamilika: true },
-    { id: 2, jina: 'Andika component ya kwanza', imekamilika: false },
-    { id: 3, jina: 'Endesha `ng serve`', imekamilika: false },
-  ]);
+  protected readonly zilizochujwa = computed(() => {
+    const kichujio = this.kichujio();
+    const zote = this.huduma.kazi();
+    if (kichujio === 'kamili') {
+      return zote.filter(k => k.imekamilika);
+    }
+    if (kichujio === 'haijamalizika') {
+      return zote.filter(k => !k.imekamilika);
+    }
+    return zote;
+  });
 
-  protected readonly kamiliZilizo = computed(
-    () => this.kazi().filter(k => k.imekamilika).length
-  );
+  protected wekaKichujio(k: Kichujio): void {
+    this.kichujio.set(k);
+  }
 
-  protected badiliza(id: number): void {
-    this.kazi.update(list =>
-      list.map(k => (k.id === id ? { ...k, imekamilika: !k.imekamilika } : k))
-    );
+  protected wekaJina(tukio: Event): void {
+    const tumbo = tukio.target as HTMLInputElement;
+    this.jinaJipya.set(tumbo.value);
+  }
+
+  protected ongezaKazi(): void {
+    this.huduma.ongeza(this.jinaJipya());
+    this.jinaJipya.set('');
   }
 }

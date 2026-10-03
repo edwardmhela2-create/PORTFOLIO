@@ -1,17 +1,50 @@
 <main>
   <h1>📝 {{ title() }}</h1>
-  <p>Kazi zimekamilika: <b>{{ kamiliZilizo() }}</b> kati ya <b>{{ kazi().length }}</b></p>
+  <p>
+    Kamili: <b>{{ huduma.kamili() }}</b> · Haijamalizika:
+    <b>{{ huduma.haijamalizika() }}</b> · Zote:
+    <b>{{ huduma.kazi().length }}</b>
+  </p>
+
+  <form class="ongeza" (submit)="$event.preventDefault(); ongezaKazi()">
+    <input
+      type="text"
+      placeholder="Kazi mpya..."
+      [value]="jinaJipya()"
+      (input)="wekaJina($event)"
+    />
+    <button type="submit">Ongeza</button>
+  </form>
+
+  <div class="vichujio" role="group" aria-label="Kichujio">
+    <button [class.active]="kichujio() === 'zote'" (click)="wekaKichujio('zote')">
+      Zote ({{ huduma.kazi().length }})
+    </button>
+    <button [class.active]="kichujio() === 'kamili'" (click)="wekaKichujio('kamili')">
+      Kamili ({{ huduma.kamili() }})
+    </button>
+    <button
+      [class.active]="kichujio() === 'haijamalizika'"
+      (click)="wekaKichujio('haijamalizika')"
+    >
+      Haijamalizika ({{ huduma.haijamalizika() }})
+    </button>
+  </div>
 
   <ul class="orodha">
-    @for (k of kazi(); track k.id) {
-      <li (click)="badiliza(k.id)" [class.imekamilika]="k.imekamilika">
-        <input type="checkbox" [checked]="k.imekamilika" (click)="$event.stopPropagation(); badiliza(k.id)" />
+    @for (k of zilizochujwa(); track k.id) {
+      <li [class.imekamilika]="k.imekamilika">
+        <input
+          type="checkbox"
+          [checked]="k.imekamilika"
+          (change)="huduma.idhini(k.id)"
+        />
         {{ k.jina }}
       </li>
+    } @empty {
+      <li class="tupu">Hakuna kazi kwenye kichujio hiki</li>
     }
   </ul>
-
-  <p class="kidokezo">Bonyeza kazi kuibadilisha (imemalizika / haijamalizika)</p>
 
   <router-outlet />
 </main>

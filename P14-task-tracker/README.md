@@ -10,16 +10,11 @@ backend** — hapa ni **sehemu ya Angular** (web app).
 - Routing tayari (`app.routes.ts`), **Vitest** kwa mitihani
 - UI ya Kiswahili (kawaida ya repo hii)
 
-## Nguzo za somo la #1 zilizotumika
-| Nguzo | Mahali hapa |
-|---|---|
-| Component + Template | `src/app/app.ts` + `app.html` |
-| Interpolation `{{ }}` | kichwa, counter |
-| Signal state | `signal<Kazi[]>(...)`, `computed(...)` |
-| Event binding `(click)` | kubonyeza kazi/checkbox |
-| Property binding `[class]`, `[checked]` | mstari wa kukatwa |
-| `@for` loop | orodha ya kazi |
-| Router | `<router-outlet />` (tayari kwa kurasa zinazofuata) |
+## Nguzo za somo la #1 na #2 zilizotumika
+| Somo | Nguzo | Mahali hapa |
+|---|---|---|
+| #1 Angular | Component + Template, interpolation `{{ }}`, signal state, event/property binding, `@for`, router | `src/app/app.ts`, `app.html` |
+| #2 TypeScript | **`interface Kazi`**, **`type Kichujio` (union)**, **class + `@Injectable` + private state**, **`inject()` (DI)**, `computed`, strict mode | `src/app/kazi.service.ts` |
 
 ## Endesha
 ```powershell
@@ -34,11 +29,11 @@ Node/npm inaweza kukwama kwa **IPv6** (haifanyi kazi hapa) — tumia
 mara ya kwanza.
 
 ## Kilachofuata (Post 1)
-- Skill #2: TypeScript (interfaces, OOP, reactive)
 - Skill #3: Tailwind + Flexbox/Grid + Angular Material
+- Skill #5: NgRx (badala ya service signals)
 - Skill #7: backend ya REST (FastAPI) + kuunganisha hapa
-- NgRx, App Store listing, Git workflow, Figma
+- App Store listing, Git workflow, Figma
 
 ## Mitihani
-4 tests — hali ya kazi (kubadilisha/kukamilika), mwitikio wa UI,
-ujuzi wa component.
+7 tests (vitest): component (kichwa, kichujio), **KaziService**
+(hali, idhini, ongeza + usafi wa input).
