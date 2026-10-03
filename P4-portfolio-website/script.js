@@ -129,6 +129,16 @@ const miradi = [
     kiungo_maandishi: "Fungua folda ya mradi",
     maelezo_zaidi: "Endesha: cd P13-mjibu-rag; ollama serve; python -m uvicorn mjibu.app:app --port 8002",
   },
+  {
+    id: "P14",
+    jina: "Task Tracker (Angular)",
+    hali: "done",
+    maelezo: "Soko la Post 1 (Frontend) kwa PPRA guide: Angular 21 + TypeScript + signals + routing + vitest — UI ya Kiswahili (tests 4).",
+    tekh: ["Angular", "TypeScript", "Signals", "Vitest"],
+    kiungo: "../P14-task-tracker/",
+    kiungo_maandishi: "Fungua folda ya mradi",
+    maelezo_zaidi: "Endesha: cd P14-task-tracker; ng serve --port 4200 (mwisho: NODE_OPTIONS=--dns-result-order=ipv4first)",
+  },
 ];
 
 function onyeshaMiradi(kichujio) {
